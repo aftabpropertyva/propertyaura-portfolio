@@ -94,7 +94,7 @@
                     LetRight<span class="text-gold">-PropertyAura</span>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/" target="_blank" class="text-gray-600 hover:text-navy">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/aftab-property-va/" target="_blank" class="text-gray-600 hover:text-navy">LinkedIn</a>
                     <a href="https://letrightpropertyaura.gumroad.com/" target="_blank" class="text-gray-600 hover:text-navy">Gumroad</a>
                 </div>
             </div>
@@ -119,7 +119,7 @@
         "email": "aftab.propertyva@gmail.com"
       },
       "sameAs": [
-        "https://www.linkedin.com/company/letright-propertyaura",
+        "https://www.linkedin.com/in/aftab-property-va/",
         "https://letrightpropertyaura.gumroad.com/"
       ]
     }
@@ -138,72 +138,84 @@
                 name: "Renters' Rights Act 2026 Compliance Kit",
                 link: "https://letrightpropertyaura.gumroad.com/l/tlfdyp",
                 price: "£49.99",
+                urgency: "Limited offer",
                 desc: "The ultimate guide to navigating the new Renters' Rights Act. Includes templates, checklists, and legal summaries."
             },
             {
                 name: "8 Compliance Mistakes That Cost UK Landlords Thousands (2026 Edition)",
                 link: "https://letrightpropertyaura.gumroad.com/l/dbsuf",
                 price: "FREE",
+                urgency: "",
                 desc: "Avoid the most common pitfalls that lead to heavy fines. Updated for the 2026 regulatory landscape."
             },
             {
                 name: "Complete Landlord Business System",
                 link: "https://letrightpropertyaura.gumroad.com/l/ecznhe",
                 price: "£99.99",
+                urgency: "Sale live",
                 desc: "A full operating system for your property business. Manage tenants, maintenance, and finances in one place."
             },
             {
                 name: "MTD Survival Bundle",
                 link: "https://letrightpropertyaura.gumroad.com/l/gioymj",
                 price: "£39.99",
+                urgency: "Limited time",
                 desc: "Everything you need to prepare for Making Tax Digital 2026. Spreadsheet templates and reporting guides."
             },
             {
                 name: "Compliance Starter Pack",
                 link: "https://letrightpropertyaura.gumroad.com/l/njmxdq",
                 price: "£29.99",
+                urgency: "Price drop",
                 desc: "Essential documents for new landlords. ASTs, inventory templates, and safety certificate trackers."
             },
             {
                 name: "2026 MTD Landlord Survival Kit",
                 link: "https://letrightpropertyaura.gumroad.com/l/eugbzt",
                 price: "£45.00",
+                urgency: "Limited offer",
                 desc: "Deep dive into MTD requirements with step-by-step setup for digital record keeping."
             },
             {
                 name: "EICR Explained (2026 Edition)",
                 link: "https://letrightpropertyaura.gumroad.com/l/hhreoe",
                 price: "£19.99",
+                urgency: "Limited time",
                 desc: "Understand your electrical safety obligations and how to manage remedial works efficiently."
             },
             {
                 name: "Gas Safety Compliance Guide (2026)",
                 link: "https://letrightpropertyaura.gumroad.com/l/xuakye",
                 price: "£19.99",
+                urgency: "Limited time",
                 desc: "Never miss a gas safety check again. Systems and processes for multi-property portfolios."
             },
             {
                 name: "Compliance Mistakes That Cost UK Landlords Thousands (old) – FREE",
                 link: "https://letrightpropertyaura.gumroad.com/l/awhyrb",
                 price: "FREE",
+                urgency: "",
                 desc: "The original guide to landlord compliance mistakes. Still relevant for foundational knowledge."
             },
             {
                 name: "PropertyAura HMO Profit Blueprint",
                 link: "https://letrightpropertyaura.gumroad.com/l/gqcahe",
                 price: "£67.00",
+                urgency: "Sale live",
                 desc: "Maximize your HMO yields with our proven management and refurb strategies."
             },
             {
                 name: "LetRight Portfolio Dashboard (Notion)",
                 link: "https://letrightpropertyaura.gumroad.com/l/bjzwx",
                 price: "£55.00",
+                urgency: "Limited offer",
                 desc: "A powerful Notion template to track your entire portfolio performance and compliance status."
             },
             {
                 name: "LetRight Compliance Vault (Document Pack)",
                 link: "https://letrightpropertyaura.gumroad.com/l/mktwlh",
                 price: "£79.00",
+                urgency: "Price drop",
                 desc: "Over 50+ professional documents, letters, and notices for every landlord scenario."
             }
         ];
@@ -229,8 +241,10 @@
                     <div class="p-8 flex-1">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-navy leading-tight">${p.name}</h3>
-                            <span class="bg-gold/10 text-gold px-3 py-1 rounded-full text-sm font-bold">${p.price}</span>
-
+                            <div class="text-right">
+                                <span class="bg-gold/10 text-gold px-3 py-1 rounded-full text-sm font-bold">${p.price}</span>
+                                ${p.urgency ? `<div class="text-gold text-xs font-medium mt-1 italic">${p.urgency}</div>` : ''}
+                            </div>
                         </div>
                         <p class="text-gray-600 text-sm mb-6">${p.desc}</p>
                     </div>
