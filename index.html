@@ -41,6 +41,9 @@
         .calculator-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
         .modal { transition: opacity 0.25s ease; }
         body.modal-active { overflow: hidden; }
+        input[type="number"], input[type="text"], input[type="email"], textarea {
+            @apply border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold focus:border-gold outline-none transition w-full;
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -119,15 +122,6 @@
             </div>
         </div>
     </section>
-
-    <!-- AdSense Leaderboard Placeholder (Hidden) -->
-    <!-- 
-    <div class="container mx-auto px-6 py-8 text-center">
-        <div class="bg-gray-200 border border-dashed border-gray-400 h-[90px] flex items-center justify-center text-gray-500">
-            AdSense Leaderboard Placeholder (728x90)
-        </div>
-    </div>
-    -->
 
     <!-- Calculator Grid Section -->
     <section id="calculators" class="py-16 bg-softGray">
@@ -234,7 +228,7 @@
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('mtd-modal')"></div>
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
+                <div class="flex justify-between items-center pb-3 border-b mb-4">
                     <p class="text-2xl font-bold text-navy">MTD 2026 Forecast</p>
                     <div class="modal-close cursor-pointer z-50" onclick="closeModal('mtd-modal')">
                         <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
@@ -242,15 +236,14 @@
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Annual Gross Rental Income (£)</label>
-                        <input type="number" id="mtd-income" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="55000">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Annual Gross Rental Income (£)</label>
+                        <input type="number" id="mtd-income" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" placeholder="e.g. 55000" oninput="calculateMTD()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Total Allowable Expenses (£)</label>
-                        <input type="number" id="mtd-expenses" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="15000">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Total Allowable Expenses (£)</label>
+                        <input type="number" id="mtd-expenses" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" placeholder="e.g. 15000" oninput="calculateMTD()">
                     </div>
-                    <button onclick="calculateMTD()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="mtd-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                    <div id="mtd-result" class="mt-4 p-4 bg-softGray rounded-lg border border-gray-200 hidden"></div>
                 </div>
             </div>
         </div>
@@ -261,7 +254,7 @@
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('r2r-modal')"></div>
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
+                <div class="flex justify-between items-center pb-3 border-b mb-4">
                     <p class="text-2xl font-bold text-navy">R2R Master Analyzer</p>
                     <div class="modal-close cursor-pointer z-50" onclick="closeModal('r2r-modal')">
                         <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
@@ -269,23 +262,22 @@
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Guaranteed Rent to Landlord (monthly £)</label>
-                        <input type="number" id="r2r-rent-out" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Guaranteed Rent to Landlord (monthly £)</label>
+                        <input type="number" id="r2r-rent-out" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateR2R()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Number of Rooms</label>
-                        <input type="number" id="r2r-rooms" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Number of Rooms</label>
+                        <input type="number" id="r2r-rooms" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateR2R()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Avg Rent per Room (monthly £)</label>
-                        <input type="number" id="r2r-rent-in" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Avg Rent per Room (monthly £)</label>
+                        <input type="number" id="r2r-rent-in" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateR2R()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Management/Cleaning/Utilities (monthly £)</label>
-                        <input type="number" id="r2r-costs" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Management/Cleaning/Utilities (monthly £)</label>
+                        <input type="number" id="r2r-costs" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateR2R()">
                     </div>
-                    <button onclick="calculateR2R()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="r2r-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                    <div id="r2r-result" class="mt-4 p-4 bg-softGray rounded-lg border border-gray-200 hidden"></div>
                 </div>
             </div>
         </div>
@@ -296,7 +288,7 @@
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('hmo-modal')"></div>
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
+                <div class="flex justify-between items-center pb-3 border-b mb-4">
                     <p class="text-2xl font-bold text-navy">HMO Yield Engine</p>
                     <div class="modal-close cursor-pointer z-50" onclick="closeModal('hmo-modal')">
                         <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
@@ -304,19 +296,18 @@
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
-                        <input type="number" id="hmo-price" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Purchase Price (£)</label>
+                        <input type="number" id="hmo-price" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateHMO()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Refurb Cost (£)</label>
-                        <input type="number" id="hmo-refurb" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Refurb Cost (£)</label>
+                        <input type="number" id="hmo-refurb" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateHMO()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Total Monthly Rent (£)</label>
-                        <input type="number" id="hmo-rent" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Total Monthly Rent (£)</label>
+                        <input type="number" id="hmo-rent" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateHMO()">
                     </div>
-                    <button onclick="calculateHMO()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="hmo-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                    <div id="hmo-result" class="mt-4 p-4 bg-softGray rounded-lg border border-gray-200 hidden"></div>
                 </div>
             </div>
         </div>
@@ -327,7 +318,7 @@
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('sa-modal')"></div>
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
+                <div class="flex justify-between items-center pb-3 border-b mb-4">
                     <p class="text-2xl font-bold text-navy">SA Stress-Test</p>
                     <div class="modal-close cursor-pointer z-50" onclick="closeModal('sa-modal')">
                         <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
@@ -335,19 +326,18 @@
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Nightly Rate (£)</label>
-                        <input type="number" id="sa-rate" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nightly Rate (£)</label>
+                        <input type="number" id="sa-rate" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateSA()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Cleaning Fee per booking (£)</label>
-                        <input type="number" id="sa-cleaning" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Cleaning Fee per booking (£)</label>
+                        <input type="number" id="sa-cleaning" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateSA()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Monthly Fixed Costs (£)</label>
-                        <input type="number" id="sa-fixed" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Monthly Fixed Costs (£)</label>
+                        <input type="number" id="sa-fixed" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateSA()">
                     </div>
-                    <button onclick="calculateSA()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="sa-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                    <div id="sa-result" class="mt-4 p-4 bg-softGray rounded-lg border border-gray-200 hidden"></div>
                 </div>
             </div>
         </div>
@@ -358,7 +348,7 @@
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('sdlt-modal')"></div>
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
+                <div class="flex justify-between items-center pb-3 border-b mb-4">
                     <p class="text-2xl font-bold text-navy">SDLT Calculator</p>
                     <div class="modal-close cursor-pointer z-50" onclick="closeModal('sdlt-modal')">
                         <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
@@ -366,19 +356,18 @@
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
-                        <input type="number" id="sdlt-price" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Purchase Price (£)</label>
+                        <input type="number" id="sdlt-price" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateSDLT()">
                     </div>
                     <div class="flex items-center">
-                        <input type="checkbox" id="sdlt-btl" class="h-4 w-4 text-navy border-gray-300 rounded">
+                        <input type="checkbox" id="sdlt-btl" class="h-4 w-4 text-navy border-gray-300 rounded" onchange="calculateSDLT()">
                         <label class="ml-2 block text-sm text-gray-700">BTL / Second Home? (+3%)</label>
                     </div>
                     <div class="flex items-center">
-                        <input type="checkbox" id="sdlt-ftb" class="h-4 w-4 text-navy border-gray-300 rounded">
+                        <input type="checkbox" id="sdlt-ftb" class="h-4 w-4 text-navy border-gray-300 rounded" onchange="calculateSDLT()">
                         <label class="ml-2 block text-sm text-gray-700">First-time Buyer?</label>
                     </div>
-                    <button onclick="calculateSDLT()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="sdlt-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                    <div id="sdlt-result" class="mt-4 p-4 bg-softGray rounded-lg border border-gray-200 hidden"></div>
                 </div>
             </div>
         </div>
@@ -389,7 +378,7 @@
         <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('cgt-modal')"></div>
         <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
             <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
+                <div class="flex justify-between items-center pb-3 border-b mb-4">
                     <p class="text-2xl font-bold text-navy">CGT Estimator</p>
                     <div class="modal-close cursor-pointer z-50" onclick="closeModal('cgt-modal')">
                         <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
@@ -397,23 +386,22 @@
                 </div>
                 <div class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
-                        <input type="number" id="cgt-purchase" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Purchase Price (£)</label>
+                        <input type="number" id="cgt-purchase" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateCGT()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Sale Price (£)</label>
-                        <input type="number" id="cgt-sale" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Sale Price (£)</label>
+                        <input type="number" id="cgt-sale" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateCGT()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Ownership Years</label>
-                        <input type="number" id="cgt-years" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Ownership Years</label>
+                        <input type="number" id="cgt-years" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateCGT()">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Private Residence Relief Years</label>
-                        <input type="number" id="cgt-relief" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Private Residence Relief Years</label>
+                        <input type="number" id="cgt-relief" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gold outline-none" oninput="calculateCGT()">
                     </div>
-                    <button onclick="calculateCGT()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="cgt-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                    <div id="cgt-result" class="mt-4 p-4 bg-softGray rounded-lg border border-gray-200 hidden"></div>
                 </div>
             </div>
         </div>
@@ -448,19 +436,18 @@
             resultDiv.classList.remove('hidden');
             
             let html = '';
-            if (income > 50000) {
-                const taxable = income - expenses;
+            if (income >= 50000) {
+                const taxable = Math.max(0, income - expenses);
                 let tax = 0;
-                if (taxable > 125140) {
-                    tax = (taxable - 125140) * 0.45 + (125140 - 50270) * 0.40 + (50270 - 12570) * 0.20;
-                } else if (taxable > 50270) {
+                // Simple 2026 tax bracket simulation (20% / 40%)
+                if (taxable > 50270) {
                     tax = (taxable - 50270) * 0.40 + (50270 - 12570) * 0.20;
                 } else if (taxable > 12570) {
                     tax = (taxable - 12570) * 0.20;
                 }
                 
                 html = `<p class="text-red-600 font-bold">Action Required: You fall under MTD 2026 Mandate.</p>
-                        <p class="mt-2">Estimated Tax: £${tax.toLocaleString()}</p>
+                        <p class="mt-2 font-bold text-navy">Estimated Tax: £${tax.toLocaleString()}</p>
                         <p class="mt-2 font-semibold">2026 Deadlines:</p>
                         <ul class="list-disc ml-5 text-sm">
                             <li>5 Aug 2026</li>
@@ -470,7 +457,7 @@
                         </ul>`;
             } else {
                 html = `<p class="text-green-600 font-bold">Not currently required for MTD 2026.</p>
-                        <p class="mt-2 text-sm">Income is below the £50,000 threshold. However, it is recommended to keep digital records for future compliance.</p>`;
+                        <p class="mt-2 text-sm text-gray-600">Income is below the £50,000 threshold.</p>`;
             }
             resultDiv.innerHTML = html;
         }
@@ -486,11 +473,12 @@
             const monthlyCashflow = (rooms * rentIn) - rentOut - costs;
             const annualCashflow = monthlyCashflow * 12;
             const initialCapital = rentOut * 2;
-            const roce = (annualCashflow / initialCapital) * 100;
+            const roce = initialCapital > 0 ? (annualCashflow / initialCapital) * 100 : 0;
 
             resultDiv.innerHTML = `<p class="font-bold text-navy">Monthly Cashflow: £${monthlyCashflow.toLocaleString()}</p>
-                                   <p>Annual Cashflow: £${annualCashflow.toLocaleString()}</p>
-                                   <p>ROCE: ${roce.toFixed(2)}% (based on £${initialCapital.toLocaleString()} initial capital)</p>`;
+                                   <p class="font-bold text-navy">Annual Profit: £${annualCashflow.toLocaleString()}</p>
+                                   <p class="mt-2">ROCE: <span class="font-bold text-gold">${roce.toFixed(2)}%</span></p>
+                                   <p class="text-xs text-gray-500 mt-1">*Based on £${initialCapital.toLocaleString()} initial capital (2x monthly rent).</p>`;
         }
 
         function calculateHMO() {
@@ -502,15 +490,15 @@
 
             const totalCost = price + refurb;
             const annualRent = rent * 12;
-            const grossYield = (annualRent / totalCost) * 100;
+            const grossYield = totalCost > 0 ? (annualRent / totalCost) * 100 : 0;
             
             const licensing = 15; // £900 / 60 months
             const maintenance = rent * 0.10;
             const netAnnual = (rent - licensing - maintenance) * 12;
-            const netYield = (netAnnual / totalCost) * 100;
+            const netYield = totalCost > 0 ? (netAnnual / totalCost) * 100 : 0;
 
             resultDiv.innerHTML = `<p class="font-bold text-navy">Gross Yield: ${grossYield.toFixed(2)}%</p>
-                                   <p>Net Yield: ${netYield.toFixed(2)}%</p>
+                                   <p class="font-bold text-navy">Net Yield: ${netYield.toFixed(2)}%</p>
                                    <p class="text-xs mt-2 text-gray-500">*Includes £15/mo licensing deduction & 10% maintenance reserve.</p>`;
         }
 
@@ -528,13 +516,19 @@
             };
 
             resultDiv.innerHTML = `
-                <div class="space-y-2">
-                    <p>Profit at 50% Occ: £${calcProfit(50).toLocaleString()}</p>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 50%"></div></div>
-                    <p class="font-bold">Profit at 70% Occ: £${calcProfit(70).toLocaleString()}</p>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 70%"></div></div>
-                    <p>Profit at 90% Occ: £${calcProfit(90).toLocaleString()}</p>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 90%"></div></div>
+                <div class="space-y-3">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1"><span>50% Occupancy</span><span class="font-bold">£${calcProfit(50).toLocaleString()}</span></div>
+                        <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-gold h-2 rounded-full" style="width: 50%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1"><span>70% Occupancy</span><span class="font-bold">£${calcProfit(70).toLocaleString()}</span></div>
+                        <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-gold h-2 rounded-full" style="width: 70%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1"><span>90% Occupancy</span><span class="font-bold">£${calcProfit(90).toLocaleString()}</span></div>
+                        <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-gold h-2 rounded-full" style="width: 90%"></div></div>
+                    </div>
                 </div>`;
         }
 
@@ -546,6 +540,7 @@
             resultDiv.classList.remove('hidden');
 
             let tax = 0;
+            // Standard Residential Rates (Simplified)
             if (price > 1500000) tax += (price - 1500000) * 0.12;
             if (price > 925000) tax += (Math.min(price, 1500000) - 925000) * 0.10;
             if (price > 250000) tax += (Math.min(price, 925000) - 250000) * 0.05;
@@ -563,8 +558,8 @@
             const resultDiv = document.getElementById('cgt-result');
             resultDiv.classList.remove('hidden');
 
-            const gain = sale - purchase;
-            const reliefAmount = (relief / years) * gain;
+            const gain = Math.max(0, sale - purchase);
+            const reliefAmount = years > 0 ? (relief / years) * gain : 0;
             const allowance = 12300;
             const taxableGain = Math.max(0, gain - reliefAmount - allowance);
             const tax = taxableGain * 0.24; // Higher rate property
