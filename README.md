@@ -8,12 +8,12 @@ A high-performance web platform designed for UK landlords, R2R investors, HMO ma
 ## 🛠 Features
 
 ### 1. Professional Property Calculators
-- **MTD 2026 Forecast Tool**: Based on the mandate starting 6 April 2026 for landlords with gross annual income >£50,000.
-- **Rent-to-Rent (R2R) Master Analyzer**: Calculates net monthly cashflow, annual profit, and ROCE.
-- **HMO Yield Engine**: Analyzes gross and net yields, including licensing fees (£900 amortized over 5 years) and maintenance reserves (10%).
-- **SA Occupancy Stress-Test**: Evaluates profit at 50%, 70%, and 90% occupancy levels.
-- **Stamp Duty Land Tax (SDLT)**: Updated for 2026 thresholds, including BTL/Second Home surcharges and First-time Buyer relief.
-- **Capital Gains Tax (CGT) Estimator**: Calculates taxable gains after Private Residence Relief and annual allowances.
+- **MTD 2026 Forecast Tool**: Applies 20%/40%/45% tax brackets based on income. Shows "not required" message for income below £50,000.
+- **Rent-to-Rent (R2R) Master Analyzer**: Calculates net monthly cashflow, annual profit, and ROCE (assuming initial capital = 2× monthly rent).
+- **HMO Yield Engine**: Analyzes gross and net yields, deducting £900 licensing fee (amortized at £15/month) and 10% maintenance reserves.
+- **SA Occupancy Stress-Test**: Outputs profit at 50%, 70%, and 90% occupancy with visual progress bars.
+- **Stamp Duty Land Tax (SDLT)**: Updated for 2026 thresholds, including a 3% surcharge for BTL/Second Home scenarios.
+- **Capital Gains Tax (CGT) Estimator**: Calculates taxable gains after Private Residence Relief and the £12,300 annual allowance.
 - **Mortgage Affordability & ICR**: Checks Interest Cover Ratio against 125% (basic) and 145% (higher rate) benchmarks.
 
 ### 2. Premium Products Integration

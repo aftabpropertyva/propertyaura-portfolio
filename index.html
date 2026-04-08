@@ -100,13 +100,14 @@
         </div>
     </section>
 
-    <!-- AdSense Leaderboard Placeholder -->
+    <!-- AdSense Leaderboard Placeholder (Hidden) -->
+    <!-- 
     <div class="container mx-auto px-6 py-8 text-center">
-        <!-- AdSense Leaderboard (728x90) -->
         <div class="bg-gray-200 border border-dashed border-gray-400 h-[90px] flex items-center justify-center text-gray-500">
             AdSense Leaderboard Placeholder (728x90)
         </div>
     </div>
+    -->
 
     <!-- Calculator Grid Section -->
     <section id="calculators" class="py-16 bg-softGray">
@@ -202,7 +203,7 @@
             </div>
             <div class="text-center text-gray-500 text-sm">
                 <p class="mb-4">&copy; 2026 LetRight-PropertyAura. All rights reserved.</p>
-                <p class="max-w-2xl mx-auto italic">"Calculators provide estimates only. Always consult a qualified professional."</p>
+                <p class="max-w-2xl mx-auto italic mb-4">"Calculators provide estimates only and do not constitute financial or legal advice. Always consult a qualified professional."</p>
             </div>
         </div>
     </footer>
@@ -428,9 +429,18 @@
             
             let html = '';
             if (income > 50000) {
-                const tax = (income - expenses) * 0.20; // Simplified 20%
+                const taxable = income - expenses;
+                let tax = 0;
+                if (taxable > 125140) {
+                    tax = (taxable - 125140) * 0.45 + (125140 - 50270) * 0.40 + (50270 - 12570) * 0.20;
+                } else if (taxable > 50270) {
+                    tax = (taxable - 50270) * 0.40 + (50270 - 12570) * 0.20;
+                } else if (taxable > 12570) {
+                    tax = (taxable - 12570) * 0.20;
+                }
+                
                 html = `<p class="text-red-600 font-bold">Action Required: You fall under MTD 2026 Mandate.</p>
-                        <p class="mt-2">Estimated Tax (20%): £${tax.toLocaleString()}</p>
+                        <p class="mt-2">Estimated Tax: £${tax.toLocaleString()}</p>
                         <p class="mt-2 font-semibold">2026 Deadlines:</p>
                         <ul class="list-disc ml-5 text-sm">
                             <li>5 Aug 2026</li>
@@ -440,7 +450,7 @@
                         </ul>`;
             } else {
                 html = `<p class="text-green-600 font-bold">Not currently required for MTD 2026.</p>
-                        <p class="mt-2 text-sm">However, it is recommended to keep digital records for future compliance.</p>`;
+                        <p class="mt-2 text-sm">Income is below the £50,000 threshold. However, it is recommended to keep digital records for future compliance.</p>`;
             }
             resultDiv.innerHTML = html;
         }
@@ -455,11 +465,12 @@
 
             const monthlyCashflow = (rooms * rentIn) - rentOut - costs;
             const annualCashflow = monthlyCashflow * 12;
-            const roce = (annualCashflow / (rentOut * 2)) * 100;
+            const initialCapital = rentOut * 2;
+            const roce = (annualCashflow / initialCapital) * 100;
 
             resultDiv.innerHTML = `<p class="font-bold text-navy">Monthly Cashflow: £${monthlyCashflow.toLocaleString()}</p>
                                    <p>Annual Cashflow: £${annualCashflow.toLocaleString()}</p>
-                                   <p>ROCE: ${roce.toFixed(2)}%</p>`;
+                                   <p>ROCE: ${roce.toFixed(2)}% (based on £${initialCapital.toLocaleString()} initial capital)</p>`;
         }
 
         function calculateHMO() {
@@ -480,7 +491,7 @@
 
             resultDiv.innerHTML = `<p class="font-bold text-navy">Gross Yield: ${grossYield.toFixed(2)}%</p>
                                    <p>Net Yield: ${netYield.toFixed(2)}%</p>
-                                   <p class="text-xs mt-2 text-gray-500">*Includes £15/mo licensing & 10% maintenance reserve.</p>`;
+                                   <p class="text-xs mt-2 text-gray-500">*Includes £15/mo licensing deduction & 10% maintenance reserve.</p>`;
         }
 
         function calculateSA() {
@@ -496,9 +507,15 @@
                 return (nights * rate) - (bookings * cleaning) - fixed;
             };
 
-            resultDiv.innerHTML = `<p>Profit at 50% Occ: £${calcProfit(50).toLocaleString()}</p>
-                                   <p class="font-bold">Profit at 70% Occ: £${calcProfit(70).toLocaleString()}</p>
-                                   <p>Profit at 90% Occ: £${calcProfit(90).toLocaleString()}</p>`;
+            resultDiv.innerHTML = `
+                <div class="space-y-2">
+                    <p>Profit at 50% Occ: £${calcProfit(50).toLocaleString()}</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 50%"></div></div>
+                    <p class="font-bold">Profit at 70% Occ: £${calcProfit(70).toLocaleString()}</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 70%"></div></div>
+                    <p>Profit at 90% Occ: £${calcProfit(90).toLocaleString()}</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 90%"></div></div>
+                </div>`;
         }
 
         function calculateSDLT() {
@@ -528,11 +545,12 @@
 
             const gain = sale - purchase;
             const reliefAmount = (relief / years) * gain;
-            const taxableGain = Math.max(0, gain - reliefAmount - 12300);
+            const allowance = 12300;
+            const taxableGain = Math.max(0, gain - reliefAmount - allowance);
             const tax = taxableGain * 0.24; // Higher rate property
 
             resultDiv.innerHTML = `<p>Total Gain: £${gain.toLocaleString()}</p>
-                                   <p>Taxable Gain: £${taxableGain.toLocaleString()}</p>
+                                   <p>Taxable Gain (after £12,300 allowance): £${taxableGain.toLocaleString()}</p>
                                    <p class="text-xl font-bold text-navy">Est. Tax (24%): £${tax.toLocaleString()}</p>`;
         }
 
@@ -548,7 +566,7 @@
             leads.push({ name, email, date: new Date().toISOString() });
             localStorage.setItem('leads', JSON.stringify(leads));
 
-            msg.textContent = "Thank you! Your free guide is on its way to your inbox.";
+            msg.textContent = "Thank you – check your inbox!";
             msg.classList.remove('hidden');
             e.target.reset();
         });
