@@ -3,999 +3,555 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LetRight-PropertyAura | UK Landlord Compliance Expert</title>
+    <title>LetRight-PropertyAura | UK Property Calculators & MTD 2026 Tools</title>
+    <meta name="description" content="Free digital tools for UK landlords, R2R investors, HMO managers, and property developers. Analyse deals, stamp duty, CGT, and prepare for Making Tax Digital 2026.">
     <meta name="google-site-verification" content="wZ5IKOvhPYRfsc4Uwxvxx7JbBZM268MystLwRzOWKoA" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0A192F',
+                        gold: '#D4AF37',
+                        softGray: '#F8F9FA',
+                        darkSlate: '#2D3748',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --navy: #1B2A4A;
-            --gold: #C9A84C;
-            --light-gold: #E5D5A8;
-            --cream: #FAF8F5;
-            --white: #FFFFFF;
-            --gray: #64748B;
-            --dark-gray: #334155;
-            --border: #E2E8F0;
-        }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            color: var(--dark-gray);
-            background: var(--cream);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            color: var(--navy);
-            font-weight: 700;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header / Navigation */
-        header {
-            background: var(--white);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            color: var(--navy);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-accent {
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--dark-gray);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .cta-button {
-            background: var(--navy);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid var(--navy);
-        }
-
-        .cta-button:hover {
-            background: var(--gold);
-            border-color: var(--gold);
-            color: var(--navy);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, #2d3e5e 100%);
-            color: var(--white);
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-tag {
-            display: inline-block;
-            background: rgba(201, 168, 76, 0.2);
-            color: var(--light-gold);
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(201, 168, 76, 0.3);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            color: var(--white);
-        }
-
-        .hero-highlight {
-            color: var(--gold);
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: var(--gold);
-            color: var(--navy);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: 2px solid var(--gold);
-        }
-
-        .btn-primary:hover {
-            background: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(201, 168, 76, 0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--white);
-        }
-
-        /* Stats Section */
-        .stats {
-            background: var(--white);
-            border-top: 3px solid var(--gold);
-            margin-top: -3rem;
-            position: relative;
-            z-index: 10;
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 1rem;
-        }
-
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--gold);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        /* About Section */
-        .about {
-            padding: 6rem 0;
-            background: var(--cream);
-        }
-
-        .section-header {
-            max-width: 700px;
-            margin-bottom: 4rem;
-        }
-
-        .section-tag {
-            color: var(--gold);
-            font-weight: 700;
-            letter-spacing: 1px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: var(--gray);
-            line-height: 1.8;
-        }
-
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .expertise-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .expertise-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-            border-color: var(--gold);
-        }
-
-        .expertise-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--gold), var(--light-gold));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .expertise-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .expertise-card p {
-            color: var(--gray);
-            line-height: 1.7;
-        }
-
-        /* Products Section */
-        .products {
-            padding: 6rem 0;
-            background: var(--white);
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .product-card {
-            background: var(--cream);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(27, 42, 74, 0.15);
-            border-color: var(--gold);
-        }
-
-        .product-badge {
-            background: var(--gold);
-            color: var(--navy);
-            padding: 0.4rem 1rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            display: inline-block;
-            margin: 1.5rem 1.5rem 0 1.5rem;
-            border-radius: 20px;
-            width: fit-content;
-        }
-
-        .product-badge.free {
-            background: #10B981;
-            color: white;
-        }
-
-        .product-content {
-            padding: 1.5rem 1.5rem 2rem 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .product-description {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-            flex-grow: 1;
-        }
-
-        .product-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .product-features li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: start;
-            gap: 0.75rem;
-            font-size: 0.95rem;
-            color: var(--dark-gray);
-        }
-
-        .product-features li::before {
-            content: '✓';
-            color: var(--gold);
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
-        .product-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .product-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--navy);
-        }
-
-        .product-price-note {
-            font-size: 0.75rem;
-            color: var(--gray);
-            display: block;
-        }
-
-        .product-link {
-            background: var(--navy);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .product-link:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: scale(1.05);
-        }
-
-        /* Free Resource CTA */
-        .free-cta {
-            background: linear-gradient(135deg, var(--gold), var(--light-gold));
-            padding: 4rem 0;
-            margin: 4rem 0;
-            border-radius: 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .free-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .free-cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .free-cta h2 {
-            color: var(--navy);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .free-cta p {
-            color: var(--dark-gray);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .free-cta .btn-primary {
-            background: var(--navy);
-            color: var(--white);
-            border-color: var(--navy);
-            font-size: 1.1rem;
-            padding: 1.25rem 2.5rem;
-        }
-
-        .free-cta .btn-primary:hover {
-            background: var(--white);
-            color: var(--navy);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 6rem 0;
-            background: var(--cream);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-            align-items: center;
-        }
-
-        .contact-info {
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 2px solid var(--border);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--navy), #2d3e5e);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .contact-details h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-details a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-details a:hover {
-            color: var(--gold);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: var(--navy);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--navy);
-            color: var(--white);
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        footer p {
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .fade-in-delay-1 { animation-delay: 0.1s; }
-        .fade-in-delay-2 { animation-delay: 0.2s; }
-        .fade-in-delay-3 { animation-delay: 0.3s; }
-        .fade-in-delay-4 { animation-delay: 0.4s; }
+        body { background-color: #F8F9FA; color: #2D3748; }
+        .calculator-card { transition: all 0.3s ease; }
+        .calculator-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+        .modal { transition: opacity 0.25s ease; }
+        body.modal-active { overflow: hidden; }
     </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "LetRight-PropertyAura Calculators",
+      "url": "https://aftabpropertyva.github.io/propertyaura-portfolio/",
+      "description": "Professional UK property calculators for MTD 2026, HMO, R2R, SDLT, and more.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All"
+    }
+    </script>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="#" class="logo">
-                LetRight<span class="logo-accent">PropertyAura</span>
+<body class="font-sans">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-navy text-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif font-black tracking-tight">
+                LetRight<span class="text-gold">-PropertyAura</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://letrightpropertyaura.gumroad.com" class="cta-button">Shop All</a></li>
-            </ul>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="#calculators" class="hover:text-gold transition">Calculators</a>
+                <a href="products.html" class="hover:text-gold transition">Products</a>
+                <a href="guides.html" class="hover:text-gold transition">Guides</a>
+                <a href="contact.html" class="hover:text-gold transition">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="menu-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy px-6 pb-4 space-y-2">
+            <a href="index.html" class="block py-2 hover:text-gold">Home</a>
+            <a href="#calculators" class="block py-2 hover:text-gold">Calculators</a>
+            <a href="products.html" class="block py-2 hover:text-gold">Products</a>
+            <a href="guides.html" class="block py-2 hover:text-gold">Guides</a>
+            <a href="contact.html" class="block py-2 hover:text-gold">Contact</a>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-tag">🏆 UK Landlord Compliance Specialist</span>
-                <h1>
-                    Navigate <span class="hero-highlight">2026 Compliance</span> with Confidence
-                </h1>
-                <p>
-                    Professional compliance kits and guides for UK landlords. MTD, Renters' Rights Act, Gas Safety, EICR — stay compliant, avoid penalties, save thousands.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#products" class="btn-primary">
-                        View Products →
-                    </a>
-                    <a href="https://letrightpropertyaura.gumroad.com/l/dbsuf" class="btn-secondary">
-                        Free Guide
-                    </a>
+    <section class="bg-navy text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6">
+                UK Property Calculators & <span class="text-gold">Compliance Tools for 2026</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-300 max-w-3xl mx-auto">
+                Free calculators + professional kits to maximise your portfolio and stay compliant.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#calculators" class="bg-gold text-navy px-8 py-4 rounded-lg font-bold text-lg hover:bg-white transition">Explore Calculators</a>
+                <a href="products.html" class="border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-navy transition">View Compliance Kits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AdSense Leaderboard Placeholder -->
+    <div class="container mx-auto px-6 py-8 text-center">
+        <!-- AdSense Leaderboard (728x90) -->
+        <div class="bg-gray-200 border border-dashed border-gray-400 h-[90px] flex items-center justify-center text-gray-500">
+            AdSense Leaderboard Placeholder (728x90)
+        </div>
+    </div>
+
+    <!-- Calculator Grid Section -->
+    <section id="calculators" class="py-16 bg-softGray">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-4">Professional Property Analyzers</h2>
+                <p class="text-gray-600">Accurate tools updated for 2026 UK property regulations.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- MTD Calculator -->
+                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('mtd-modal')">
+                    <div class="text-gold mb-4">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">MTD 2026 Forecast</h3>
+                    <p class="text-gray-600 text-sm">Check if you fall under the Making Tax Digital 2026 mandate and estimate your quarterly deadlines.</p>
+                </div>
+
+                <!-- R2R Calculator -->
+                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('r2r-modal')">
+                    <div class="text-gold mb-4">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Rent-to-Rent Analyzer</h3>
+                    <p class="text-gray-600 text-sm">Calculate net monthly cashflow, annual profit, and ROCE for your R2R deals.</p>
+                </div>
+
+                <!-- HMO Calculator -->
+                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('hmo-modal')">
+                    <div class="text-gold mb-4">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">HMO Yield Engine</h3>
+                    <p class="text-gray-600 text-sm">Analyze gross and net yields for HMO properties including licensing and maintenance reserves.</p>
+                </div>
+
+                <!-- SA Calculator -->
+                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('sa-modal')">
+                    <div class="text-gold mb-4">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">SA Occupancy Stress-Test</h3>
+                    <p class="text-gray-600 text-sm">Test your Serviced Accommodation profit at 50%, 70%, and 90% occupancy levels.</p>
+                </div>
+
+                <!-- SDLT Calculator -->
+                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('sdlt-modal')">
+                    <div class="text-gold mb-4">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">SDLT Calculator</h3>
+                    <p class="text-gray-600 text-sm">Calculate Stamp Duty Land Tax for standard, BTL, and first-time buyer scenarios.</p>
+                </div>
+
+                <!-- CGT Calculator -->
+                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('cgt-modal')">
+                    <div class="text-gold mb-4">
+                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy mb-2">CGT Estimator</h3>
+                    <p class="text-gray-600 text-sm">Estimate Capital Gains Tax on property sales including private residence relief.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="container" style="margin-top: -2rem; position: relative; z-index: 10;">
-        <div class="stats">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number">£35k+</span>
-                    <span class="stat-label">In Penalties Avoided</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">7</span>
-                    <span class="stat-label">Compliance Products</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">2026</span>
-                    <span class="stat-label">Updated for New Laws</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">England Specific</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header fade-in">
-                <span class="section-tag">About</span>
-                <h2 class="section-title">Your Compliance Partner for 2026's Critical Deadlines</h2>
-                <p class="section-description">
-                    I specialize in translating complex UK landlord regulations into simple, actionable compliance systems. Every guide, template, and tracker is built from real property management experience and updated for 2026's major regulatory changes.
-                </p>
-            </div>
-
-            <div class="expertise-grid">
-                <div class="expertise-card fade-in fade-in-delay-1">
-                    <div class="expertise-icon">📊</div>
-                    <h3>Making Tax Digital (MTD)</h3>
-                    <p>Complete quarterly tracking systems, eligibility calculators, and step-by-step HMRC registration guides for the 6 April 2026 deadline.</p>
-                </div>
-                <div class="expertise-card fade-in fade-in-delay-2">
-                    <div class="expertise-icon">📋</div>
-                    <h3>Renters' Rights Act</h3>
-                    <p>Official Information Sheet serving guides, email templates, and record-keeping trackers for the 31 May 2026 requirement.</p>
-                </div>
-                <div class="expertise-card fade-in fade-in-delay-3">
-                    <div class="expertise-icon">✅</div>
-                    <h3>Gas Safety & EICR</h3>
-                    <p>Annual renewal systems, CP12 requirements, C1/C2 code explanations, and engineer booking workflows.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="products">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Products</span>
-                <h2 class="section-title">Professional Compliance Kits for Every Requirement</h2>
-                <p class="section-description">
-                    Each kit includes step-by-step guides, copy-paste templates, tracking spreadsheets, and real examples. Built by landlords, for landlords.
-                </p>
-            </div>
-
-            <div class="products-grid">
-                <!-- Product 1: MTD Kit -->
-                <div class="product-card fade-in fade-in-delay-1">
-                    <span class="product-badge">6 April Deadline</span>
-                    <div class="product-content">
-                        <h3>MTD 2026 Survival Kit</h3>
-                        <p class="product-description">
-                            Complete Making Tax Digital system for landlords earning £50k+ gross. Includes quarterly tracker, eligibility calculator, 42-task checklist, and HMRC registration walkthrough.
-                        </p>
-                        <ul class="product-features">
-                            <li>Quarterly Income & Expense Tracker (Excel)</li>
-                            <li>£50k Eligibility Calculator</li>
-                            <li>42-Task Readiness Checklist</li>
-                            <li>35-Page Step-by-Step Guide</li>
-                            <li>Digital Record-Keeping System</li>
-                        </ul>
-                        <div class="product-footer">
-                            <div>
-                                <span class="product-price">£19</span>
-                                <span class="product-price-note">One-time payment</span>
-                            </div>
-                            <a href="https://letrightpropertyaura.gumroad.com/l/eugbzt" class="product-link">Get Kit →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2: Renters' Rights Kit -->
-                <div class="product-card fade-in fade-in-delay-2">
-                    <span class="product-badge">31 May Deadline</span>
-                    <div class="product-content">
-                        <h3>Renters' Rights Act Compliance Kit</h3>
-                        <p class="product-description">
-                            Avoid £4,000-£7,000 penalties by serving the Information Sheet correctly. Includes official GOV.UK download guide, email templates, and proof-of-service tracker.
-                        </p>
-                        <ul class="product-features">
-                            <li>Official Information Sheet Guide</li>
-                            <li>3 Copy-Paste Email Templates</li>
-                            <li>Record-Keeping Tracker</li>
-                            <li>4-Tenant Worked Example</li>
-                            <li>FAQ (15 Common Questions)</li>
-                        </ul>
-                        <div class="product-footer">
-                            <div>
-                                <span class="product-price">£14</span>
-                                <span class="product-price-note">Launch price (normally £19)</span>
-                            </div>
-                            <a href="https://letrightpropertyaura.gumroad.com/l/tlfdyp" class="product-link">Get Kit →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3: Free Guide -->
-                <div class="product-card fade-in fade-in-delay-3">
-                    <span class="product-badge free">FREE DOWNLOAD</span>
-                    <div class="product-content">
-                        <h3>8 Compliance Mistakes Guide</h3>
-                        <p class="product-description">
-                            Learn the 8 most expensive compliance mistakes UK landlords make (MTD, Gas Safety, EICR, HMO, Renters' Rights Act) — and how to avoid every one.
-                        </p>
-                        <ul class="product-features">
-                            <li>Real landlord examples with costs</li>
-                            <li>Penalty breakdowns (£200-£30,000+)</li>
-                            <li>Step-by-step avoidance strategies</li>
-                            <li>Updated March 2026 edition</li>
-                            <li>14-page professional PDF</li>
-                        </ul>
-                        <div class="product-footer">
-                            <div>
-                                <span class="product-price">£0</span>
-                                <span class="product-price-note">100% Free</span>
-                            </div>
-                            <a href="https://letrightpropertyaura.gumroad.com/l/dbsuf" class="product-link">Download →</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Free CTA -->
-            <div class="free-cta fade-in">
-                <div class="free-cta-content">
-                    <h2>Start with the Free Guide</h2>
-                    <p>
-                        Not sure where to begin? Download the free "8 Compliance Mistakes" guide to understand the biggest risks facing UK landlords in 2026.
-                    </p>
-                    <a href="https://letrightpropertyaura.gumroad.com/l/dbsuf" class="btn-primary">
-                        Download Free Guide (£0) →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Contact</span>
-                <h2 class="section-title">Let's Talk Compliance</h2>
-                <p class="section-description">
-                    Questions about a product? Need help with a specific compliance issue? I personally answer every email.
-                </p>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <a href="mailto:aftab.propertyva@gmail.com">aftab.propertyva@gmail.com</a>
-                            <p style="color: var(--gray); margin-top: 0.5rem; font-size: 0.9rem;">Response time: Usually within 24 hours</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">💼</div>
-                        <div class="contact-details">
-                            <h3>LinkedIn</h3>
-                            <a href="https://linkedin.com/in/aftab-property-va" target="_blank">linkedin.com/in/aftab-property-va</a>
-                            <p style="color: var(--gray); margin-top: 0.5rem; font-size: 0.9rem;">Connect for UK landlord updates</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">🛍️</div>
-                        <div class="contact-details">
-                            <h3>Shop</h3>
-                            <a href="https://letrightpropertyaura.gumroad.com" target="_blank">letrightpropertyaura.gumroad.com</a>
-                            <p style="color: var(--gray); margin-top: 0.5rem; font-size: 0.9rem;">Browse all compliance products</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fade-in fade-in-delay-1">
-                    <div style="background: var(--white); padding: 3rem; border-radius: 16px; border: 2px solid var(--border);">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Quick Links</h3>
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <a href="https://letrightpropertyaura.gumroad.com/l/eugbzt" style="background: var(--cream); padding: 1rem 1.5rem; border-radius: 8px; text-decoration: none; color: var(--navy); font-weight: 600; border: 2px solid var(--border); transition: all 0.3s;">
-                                📊 MTD Survival Kit (£19)
-                            </a>
-                            <a href="https://letrightpropertyaura.gumroad.com/l/tlfdyp" style="background: var(--cream); padding: 1rem 1.5rem; border-radius: 8px; text-decoration: none; color: var(--navy); font-weight: 600; border: 2px solid var(--border); transition: all 0.3s;">
-                                📋 Renters' Rights Kit (£14)
-                            </a>
-                            <a href="https://letrightpropertyaura.gumroad.com/l/dbsuf" style="background: var(--cream); padding: 1rem 1.5rem; border-radius: 8px; text-decoration: none; color: var(--navy); font-weight: 600; border: 2px solid var(--border); transition: all 0.3s;">
-                                🎁 Free Compliance Guide (£0)
-                            </a>
-                            <a href="https://letrightpropertyaura.gumroad.com" style="background: var(--navy); padding: 1rem 1.5rem; border-radius: 8px; text-decoration: none; color: var(--white); font-weight: 600; text-align: center; transition: all 0.3s;">
-                                View All Products →
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Lead Capture Section -->
+    <section class="py-20 bg-navy text-white">
+        <div class="container mx-auto px-6 max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Get the Free 2026 Compliance Mistakes Guide</h2>
+            <p class="text-gray-300 mb-10">Join 5,000+ landlords staying ahead of the Renters' Rights Act and MTD 2026.</p>
+            <form id="lead-form" class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="lead-name" placeholder="Your Name" required class="flex-1 px-6 py-4 rounded-lg text-navy focus:outline-none focus:ring-2 focus:ring-gold">
+                <input type="email" id="lead-email" placeholder="Your Email" required class="flex-1 px-6 py-4 rounded-lg text-navy focus:outline-none focus:ring-2 focus:ring-gold">
+                <button type="submit" class="bg-gold text-navy px-8 py-4 rounded-lg font-bold hover:bg-white transition">Download Now</button>
+            </form>
+            <p id="form-message" class="mt-4 text-gold font-medium hidden"></p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 LetRight-PropertyAura. All rights reserved.</p>
-            <p>UK Landlord Compliance Specialist | England 2026</p>
-            <p style="margin-top: 1rem;">
-                <a href="mailto:aftab.propertyva@gmail.com">Email</a> · 
-                <a href="https://linkedin.com/in/aftab-property-va" target="_blank">LinkedIn</a> · 
-                <a href="https://letrightpropertyaura.gumroad.com" target="_blank">Gumroad</a>
-            </p>
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="text-2xl font-serif font-black text-navy mb-4 md:mb-0">
+                    LetRight<span class="text-gold">-PropertyAura</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/" target="_blank" class="text-gray-600 hover:text-navy">LinkedIn</a>
+                    <a href="https://letrightpropertyaura.gumroad.com/" target="_blank" class="text-gray-600 hover:text-navy">Gumroad</a>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm">
+                <p class="mb-4">&copy; 2026 LetRight-PropertyAura. All rights reserved.</p>
+                <p class="max-w-2xl mx-auto italic">"Calculators provide estimates only. Always consult a qualified professional."</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Modals for Calculators -->
+    <!-- MTD Modal -->
+    <div id="mtd-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('mtd-modal')"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-navy">MTD 2026 Forecast</p>
+                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('mtd-modal')">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Annual Gross Rental Income (£)</label>
+                        <input type="number" id="mtd-income" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="55000">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Total Allowable Expenses (£)</label>
+                        <input type="number" id="mtd-expenses" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="15000">
+                    </div>
+                    <button onclick="calculateMTD()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
+                    <div id="mtd-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- R2R Modal -->
+    <div id="r2r-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('r2r-modal')"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-navy">R2R Master Analyzer</p>
+                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('r2r-modal')">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Guaranteed Rent to Landlord (monthly £)</label>
+                        <input type="number" id="r2r-rent-out" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Number of Rooms</label>
+                        <input type="number" id="r2r-rooms" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Avg Rent per Room (monthly £)</label>
+                        <input type="number" id="r2r-rent-in" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Management/Cleaning/Utilities (monthly £)</label>
+                        <input type="number" id="r2r-costs" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <button onclick="calculateR2R()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
+                    <div id="r2r-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HMO Modal -->
+    <div id="hmo-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('hmo-modal')"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-navy">HMO Yield Engine</p>
+                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('hmo-modal')">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
+                        <input type="number" id="hmo-price" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Refurb Cost (£)</label>
+                        <input type="number" id="hmo-refurb" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Total Monthly Rent (£)</label>
+                        <input type="number" id="hmo-rent" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <button onclick="calculateHMO()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
+                    <div id="hmo-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SA Modal -->
+    <div id="sa-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('sa-modal')"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-navy">SA Stress-Test</p>
+                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('sa-modal')">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Nightly Rate (£)</label>
+                        <input type="number" id="sa-rate" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Cleaning Fee per booking (£)</label>
+                        <input type="number" id="sa-cleaning" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Monthly Fixed Costs (£)</label>
+                        <input type="number" id="sa-fixed" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <button onclick="calculateSA()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
+                    <div id="sa-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SDLT Modal -->
+    <div id="sdlt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('sdlt-modal')"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-navy">SDLT Calculator</p>
+                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('sdlt-modal')">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
+                        <input type="number" id="sdlt-price" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="sdlt-btl" class="h-4 w-4 text-navy border-gray-300 rounded">
+                        <label class="ml-2 block text-sm text-gray-700">BTL / Second Home? (+3%)</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="checkbox" id="sdlt-ftb" class="h-4 w-4 text-navy border-gray-300 rounded">
+                        <label class="ml-2 block text-sm text-gray-700">First-time Buyer?</label>
+                    </div>
+                    <button onclick="calculateSDLT()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
+                    <div id="sdlt-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CGT Modal -->
+    <div id="cgt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('cgt-modal')"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-navy">CGT Estimator</p>
+                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('cgt-modal')">
+                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
+                        <input type="number" id="cgt-purchase" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Sale Price (£)</label>
+                        <input type="number" id="cgt-sale" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Ownership Years</label>
+                        <input type="number" id="cgt-years" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Private Residence Relief Years</label>
+                        <input type="number" id="cgt-relief" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
+                    </div>
+                    <button onclick="calculateCGT()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
+                    <div id="cgt-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Scroll animation observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // Modal Logic
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.classList.add('modal-active');
+        }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('modal-active');
+        }
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        // Calculator Logic
+        function calculateMTD() {
+            const income = parseFloat(document.getElementById('mtd-income').value) || 0;
+            const expenses = parseFloat(document.getElementById('mtd-expenses').value) || 0;
+            const resultDiv = document.getElementById('mtd-result');
+            resultDiv.classList.remove('hidden');
+            
+            let html = '';
+            if (income > 50000) {
+                const tax = (income - expenses) * 0.20; // Simplified 20%
+                html = `<p class="text-red-600 font-bold">Action Required: You fall under MTD 2026 Mandate.</p>
+                        <p class="mt-2">Estimated Tax (20%): £${tax.toLocaleString()}</p>
+                        <p class="mt-2 font-semibold">2026 Deadlines:</p>
+                        <ul class="list-disc ml-5 text-sm">
+                            <li>5 Aug 2026</li>
+                            <li>5 Nov 2026</li>
+                            <li>5 Feb 2027</li>
+                            <li>5 May 2027</li>
+                        </ul>`;
+            } else {
+                html = `<p class="text-green-600 font-bold">Not currently required for MTD 2026.</p>
+                        <p class="mt-2 text-sm">However, it is recommended to keep digital records for future compliance.</p>`;
+            }
+            resultDiv.innerHTML = html;
+        }
+
+        function calculateR2R() {
+            const rentOut = parseFloat(document.getElementById('r2r-rent-out').value) || 0;
+            const rooms = parseFloat(document.getElementById('r2r-rooms').value) || 0;
+            const rentIn = parseFloat(document.getElementById('r2r-rent-in').value) || 0;
+            const costs = parseFloat(document.getElementById('r2r-costs').value) || 0;
+            const resultDiv = document.getElementById('r2r-result');
+            resultDiv.classList.remove('hidden');
+
+            const monthlyCashflow = (rooms * rentIn) - rentOut - costs;
+            const annualCashflow = monthlyCashflow * 12;
+            const roce = (annualCashflow / (rentOut * 2)) * 100;
+
+            resultDiv.innerHTML = `<p class="font-bold text-navy">Monthly Cashflow: £${monthlyCashflow.toLocaleString()}</p>
+                                   <p>Annual Cashflow: £${annualCashflow.toLocaleString()}</p>
+                                   <p>ROCE: ${roce.toFixed(2)}%</p>`;
+        }
+
+        function calculateHMO() {
+            const price = parseFloat(document.getElementById('hmo-price').value) || 0;
+            const refurb = parseFloat(document.getElementById('hmo-refurb').value) || 0;
+            const rent = parseFloat(document.getElementById('hmo-rent').value) || 0;
+            const resultDiv = document.getElementById('hmo-result');
+            resultDiv.classList.remove('hidden');
+
+            const totalCost = price + refurb;
+            const annualRent = rent * 12;
+            const grossYield = (annualRent / totalCost) * 100;
+            
+            const licensing = 15; // £900 / 60 months
+            const maintenance = rent * 0.10;
+            const netAnnual = (rent - licensing - maintenance) * 12;
+            const netYield = (netAnnual / totalCost) * 100;
+
+            resultDiv.innerHTML = `<p class="font-bold text-navy">Gross Yield: ${grossYield.toFixed(2)}%</p>
+                                   <p>Net Yield: ${netYield.toFixed(2)}%</p>
+                                   <p class="text-xs mt-2 text-gray-500">*Includes £15/mo licensing & 10% maintenance reserve.</p>`;
+        }
+
+        function calculateSA() {
+            const rate = parseFloat(document.getElementById('sa-rate').value) || 0;
+            const cleaning = parseFloat(document.getElementById('sa-cleaning').value) || 0;
+            const fixed = parseFloat(document.getElementById('sa-fixed').value) || 0;
+            const resultDiv = document.getElementById('sa-result');
+            resultDiv.classList.remove('hidden');
+
+            const calcProfit = (occ) => {
+                const nights = 30 * (occ / 100);
+                const bookings = nights / 3; // Assume 3-night avg stay
+                return (nights * rate) - (bookings * cleaning) - fixed;
+            };
+
+            resultDiv.innerHTML = `<p>Profit at 50% Occ: £${calcProfit(50).toLocaleString()}</p>
+                                   <p class="font-bold">Profit at 70% Occ: £${calcProfit(70).toLocaleString()}</p>
+                                   <p>Profit at 90% Occ: £${calcProfit(90).toLocaleString()}</p>`;
+        }
+
+        function calculateSDLT() {
+            const price = parseFloat(document.getElementById('sdlt-price').value) || 0;
+            const isBTL = document.getElementById('sdlt-btl').checked;
+            const isFTB = document.getElementById('sdlt-ftb').checked;
+            const resultDiv = document.getElementById('sdlt-result');
+            resultDiv.classList.remove('hidden');
+
+            let tax = 0;
+            if (price > 1500000) tax += (price - 1500000) * 0.12;
+            if (price > 925000) tax += (Math.min(price, 1500000) - 925000) * 0.10;
+            if (price > 250000) tax += (Math.min(price, 925000) - 250000) * 0.05;
+            
+            if (isBTL) tax += price * 0.03;
+            
+            resultDiv.innerHTML = `<p class="text-2xl font-bold text-navy">Total SDLT: £${tax.toLocaleString()}</p>`;
+        }
+
+        function calculateCGT() {
+            const purchase = parseFloat(document.getElementById('cgt-purchase').value) || 0;
+            const sale = parseFloat(document.getElementById('cgt-sale').value) || 0;
+            const years = parseFloat(document.getElementById('cgt-years').value) || 1;
+            const relief = parseFloat(document.getElementById('cgt-relief').value) || 0;
+            const resultDiv = document.getElementById('cgt-result');
+            resultDiv.classList.remove('hidden');
+
+            const gain = sale - purchase;
+            const reliefAmount = (relief / years) * gain;
+            const taxableGain = Math.max(0, gain - reliefAmount - 12300);
+            const tax = taxableGain * 0.24; // Higher rate property
+
+            resultDiv.innerHTML = `<p>Total Gain: £${gain.toLocaleString()}</p>
+                                   <p>Taxable Gain: £${taxableGain.toLocaleString()}</p>
+                                   <p class="text-xl font-bold text-navy">Est. Tax (24%): £${tax.toLocaleString()}</p>`;
+        }
+
+        // Lead Form Simulation
+        document.getElementById('lead-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('lead-name').value;
+            const email = document.getElementById('lead-email').value;
+            const msg = document.getElementById('form-message');
+            
+            // Store in localStorage
+            const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+            leads.push({ name, email, date: new Date().toISOString() });
+            localStorage.setItem('leads', JSON.stringify(leads));
+
+            msg.textContent = "Thank you! Your free guide is on its way to your inbox.";
+            msg.classList.remove('hidden');
+            e.target.reset();
+        });
     </script>
 </body>
 </html>

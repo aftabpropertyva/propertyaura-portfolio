@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guides | LetRight-PropertyAura UK Property Insights</title>
+    <meta name="description" content="Expert guides on UK property compliance, MTD 2026, and landlord best practices.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0A192F',
+                        gold: '#D4AF37',
+                        softGray: '#F8F9FA',
+                        darkSlate: '#2D3748',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #F8F9FA; color: #2D3748; }
+        .guide-card { transition: all 0.3s ease; }
+        .guide-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-navy text-white shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif font-black tracking-tight">
+                LetRight<span class="text-gold">-PropertyAura</span>
+            </a>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="index.html#calculators" class="hover:text-gold transition">Calculators</a>
+                <a href="products.html" class="hover:text-gold transition">Products</a>
+                <a href="guides.html" class="text-gold transition">Guides</a>
+                <a href="contact.html" class="hover:text-gold transition">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="menu-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy px-6 pb-4 space-y-2">
+            <a href="index.html" class="block py-2 hover:text-gold">Home</a>
+            <a href="index.html#calculators" class="block py-2 hover:text-gold">Calculators</a>
+            <a href="products.html" class="block py-2 hover:text-gold">Products</a>
+            <a href="guides.html" class="block py-2 text-gold">Guides</a>
+            <a href="contact.html" class="block py-2 hover:text-gold">Contact</a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="bg-navy text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Property <span class="text-gold">Insights & Guides</span></h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">Stay ahead of the curve with our expert analysis of the UK property market and regulatory changes.</p>
+        </div>
+    </section>
+
+    <!-- Guides Grid -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Guide 1 -->
+                <article class="guide-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center text-gray-400">
+                        <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center text-gold text-sm font-bold mb-4 uppercase tracking-widest">Compliance</div>
+                        <h2 class="text-2xl font-bold text-navy mb-4">Understanding MTD 2026: What Landlords Need to Know</h2>
+                        <p class="text-gray-600 mb-6">From 6 April 2026, the way you report your rental income is changing forever. Making Tax Digital (MTD) for Income Tax will require landlords with gross annual income over £50,000 to keep digital records and send quarterly updates to HMRC.</p>
+                        <a href="#" class="text-navy font-bold hover:text-gold transition flex items-center">Read Full Guide &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Guide 2 -->
+                <article class="guide-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center text-gray-400">
+                        <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center text-gold text-sm font-bold mb-4 uppercase tracking-widest">Investment</div>
+                        <h2 class="text-2xl font-bold text-navy mb-4">HMO Licensing Fees Explained: A 2026 Breakdown</h2>
+                        <p class="text-gray-600 mb-6">HMO licensing can be a significant cost for property investors. In this guide, we break down the average licensing fees across major UK cities, how to amortize these costs over the 5-year license period, and tips for staying compliant with local council standards.</p>
+                        <a href="#" class="text-navy font-bold hover:text-gold transition flex items-center">Read Full Guide &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="text-2xl font-serif font-black text-navy mb-4 md:mb-0">
+                    LetRight<span class="text-gold">-PropertyAura</span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/" target="_blank" class="text-gray-600 hover:text-navy">LinkedIn</a>
+                    <a href="https://letrightpropertyaura.gumroad.com/" target="_blank" class="text-gray-600 hover:text-navy">Gumroad</a>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 text-sm">
+                <p class="mb-4">&copy; 2026 LetRight-PropertyAura. All rights reserved.</p>
+                <p class="max-w-2xl mx-auto italic">"Calculators provide estimates only. Always consult a qualified professional."</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
