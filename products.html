@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropertyAura Products: UK Landlord Compliance Kits & Business Systems</title>
-    <meta name="description" content="Explore PropertyAura's professional compliance kits, MTD 2026 survival bundles, and comprehensive landlord business systems for UK property investors.">
-    <meta name="keywords" content="UK landlord compliance kits, MTD 2026 bundles, property business systems, landlord documents, property management tools, Renters' Rights Act, HMO compliance">
+    <title>Products | LetRight-PropertyAura Compliance Kits</title>
+    <meta name="description" content="Professional UK property compliance kits, MTD survival bundles, and landlord business systems.">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -105,26 +104,6 @@
         </div>
     </footer>
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "LetRight-PropertyAura",
-      "url": "https://aftabpropertyva.github.io/propertyaura-portfolio/",
-      "logo": "https://aftabpropertyva.github.io/propertyaura-portfolio/logo.png",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+44-791-234-5678",
-        "contactType": "customer service",
-        "email": "aftab.propertyva@gmail.com"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/aftab-property-va/",
-        "https://letrightpropertyaura.gumroad.com/"
-      ]
-    }
-    </script>
-
     <script>
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
@@ -223,27 +202,13 @@
         const container = document.getElementById('products-container');
         products.forEach(p => {
             const card = `
-                <script type="application/ld+json">
-                {
-                  "@context": "https://schema.org",
-                  "@type": "Product",
-                  "name": "${p.name}",
-                  "description": "${p.desc}",
-                  "offers": {
-                    "@type": "Offer",
-                    "priceCurrency": "GBP",
-                    "price": "${p.price.replace("£", "")}",
-                    "url": "${p.link}"
-                  }
-                }
-                </script>
                 <div class="product-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
                     <div class="p-8 flex-1">
-                        <div class="flex justify-between items-start mb-4">
+                        <div class="flex justify-between items-start mb-2">
                             <h3 class="text-xl font-bold text-navy leading-tight">${p.name}</h3>
                             <div class="text-right">
-                                <span class="bg-gold/10 text-gold px-3 py-1 rounded-full text-sm font-bold">${p.price}</span>
-                                ${p.urgency ? `<div class="text-gold text-xs font-medium mt-1 italic">${p.urgency}</div>` : ''}
+                                <span class="bg-gold/10 text-gold px-3 py-1 rounded-full text-sm font-bold block">${p.price}</span>
+                                ${p.urgency ? `<span class="text-gold text-xs italic mt-1 block">${p.urgency}</span>` : ''}
                             </div>
                         </div>
                         <p class="text-gray-600 text-sm mb-6">${p.desc}</p>
