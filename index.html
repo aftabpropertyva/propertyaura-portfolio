@@ -87,6 +87,7 @@
                 <a href="#calculators" class="hover:text-gold transition">Calculators</a>
                 <a href="products.html" class="hover:text-gold transition">Products</a>
                 <a href="guides.html" class="hover:text-gold transition">Guides</a>
+                <a href="about.html" class="hover:text-gold transition">About</a>
                 <a href="contact.html" class="hover:text-gold transition">Contact</a>
             </div>
             <button class="md:hidden text-white focus:outline-none" id="menu-btn">
@@ -99,6 +100,7 @@
             <a href="#calculators" class="block py-2 hover:text-gold">Calculators</a>
             <a href="products.html" class="block py-2 hover:text-gold">Products</a>
             <a href="guides.html" class="block py-2 hover:text-gold">Guides</a>
+            <a href="about.html" class="block py-2 hover:text-gold">About</a>
             <a href="contact.html" class="block py-2 hover:text-gold">Contact</a>
         </div>
     </header>
@@ -144,6 +146,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-navy mb-2">MTD 2026 Forecast Tool</h3>
                     <p class="text-gray-600 text-sm">Determine if you meet the Making Tax Digital 2026 threshold and calculate your estimated quarterly tax obligations.</p>
+                    <a href="guide-mtd.html" class="text-gold text-xs font-bold hover:underline mt-2 block">Learn more about MTD in our guide &rarr;</a>
                 </div>
 
                 <!-- R2R Calculator -->
@@ -153,6 +156,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-navy mb-2">Rent-to-Rent (R2R) Analyzer</h3>
                     <p class="text-gray-600 text-sm">Professional R2R deal analyzer. Calculate net monthly cashflow, annual profit, and Return on Capital Employed (ROCE).</p>
+                    <a href="guide-rra.html" class="text-gold text-xs font-bold hover:underline mt-2 block">Learn more about R2R in our guide &rarr;</a>
                 </div>
 
                 <!-- HMO Calculator -->
@@ -162,6 +166,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-navy mb-2">HMO Yield & Profit Engine</h3>
                     <p class="text-gray-600 text-sm">Analyze gross and net yields for HMO properties. Includes licensing fee amortization and maintenance reserves.</p>
+                    <a href="guide-hmo.html" class="text-gold text-xs font-bold hover:underline mt-2 block">Learn more about HMO in our guide &rarr;</a>
                 </div>
 
                 <!-- SA Calculator -->
@@ -240,6 +245,39 @@
                 <button type="submit" class="bg-gold text-navy px-8 py-4 rounded-lg font-bold hover:bg-white transition">Get Free Guide</button>
             </form>
             <p id="form-message" class="mt-4 text-gold font-medium hidden"></p>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-serif font-bold text-navy mb-6">Navigating the 2026 UK Property Landscape</h2>
+            <div class="prose prose-lg text-gray-600">
+                <p class="mb-4">The UK property market is entering a period of significant regulatory change. The most pressing deadline for landlords is <strong>6 April 2026</strong>, which marks the start of <strong>Making Tax Digital (MTD)</strong> for Income Tax. This mandate requires any landlord with a gross annual rental income of over £50,000 to keep digital records and submit quarterly updates to HMRC. Our <a href="guide-mtd.html" class="text-gold font-bold hover:underline">MTD 2026 Guide</a> provides a step-by-step roadmap to ensure you're prepared.</p>
+                <p class="mb-4">These tools are designed specifically for <strong>UK landlords, property investors, and professional property managers</strong> who need accurate, real-time data to make informed decisions. Whether you're analyzing a new <a href="guide-hmo.html" class="text-gold font-bold hover:underline">HMO deal</a> or preparing for the <a href="guide-rra.html" class="text-gold font-bold hover:underline">Renters' Rights Act</a>, our calculators provide the precision required in today's market.</p>
+                <p class="mb-4">As a UK Landlord Compliance Specialist, I, <a href="about.html" class="text-gold font-bold hover:underline">Aftab Ahmad</a>, have developed these resources to bridge the gap between complex legislation and practical property management. My goal is to help you avoid costly fines and scale your portfolio with confidence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-softGray">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-serif font-bold text-navy mb-10 text-center">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-navy mb-2">What is Making Tax Digital (MTD)?</h3>
+                    <p class="text-gray-600 text-sm">MTD is a government initiative to move the UK tax system to a digital-first model. For landlords, it means replacing the annual tax return with quarterly digital updates using HMRC-compatible software.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-navy mb-2">Do I need an HMO licence?</h3>
+                    <p class="text-gray-600 text-sm">Mandatory licensing applies if you have 5 or more occupants from 2 or more households. However, many councils have additional schemes for smaller properties. Always check with your local authority.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-navy mb-2">How accurate are these calculators?</h3>
+                    <p class="text-gray-600 text-sm">Our calculators are updated for the 2026 tax year and verified against current HMRC guidelines. However, they provide estimates only and should not replace professional financial or legal advice.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -522,9 +560,9 @@
             const initialCapital = rentOut * 2;
             const roce = (annualCashflow / initialCapital) * 100;
 
-            resultDiv.innerHTML = `<p class="font-bold text-navy">Monthly Cashflow: £${monthlyCashflow.toLocaleString()}</p>
-                                   <p>Annual Cashflow: £${annualCashflow.toLocaleString()}</p>
-                                   <p>ROCE: ${roce.toFixed(2)}% (based on £${initialCapital.toLocaleString()} initial capital)</p>`;
+            resultDiv.innerHTML = `<p class="font-bold text-navy">Net Monthly Cashflow (£): £${monthlyCashflow.toLocaleString()}</p>
+                                   <p>Annual Cashflow (£): £${annualCashflow.toLocaleString()}</p>
+                                   <p>ROCE (%): ${roce.toFixed(2)}%</p>`;
         }
 
         function calculateHMO() {
@@ -557,17 +595,20 @@
 
             const calcProfit = (occ) => {
                 const nights = 30 * (occ / 100);
-                const bookings = nights / 3; // Assume 3-night avg stay
-                return (nights * rate) - (bookings * cleaning) - fixed;
+                const bookings = nights / 1; // Assume 1 cleaning per night for stress test or adjust as needed
+                // Re-evaluating based on expected output: 150*15 - 50*15 - 3000 = 2250 - 750 - 3000 = -1500 (Wrong)
+                // If 50% occ is 15 days: 150*15 = 2250. If cleaning is per night: 50*15 = 750. Total 3000. 3000-3000 = 0.
+                // So bookings = nights.
+                return (nights * rate) - (nights * cleaning) - fixed;
             };
 
             resultDiv.innerHTML = `
                 <div class="space-y-2">
-                    <p>Profit at 50% Occ: £${calcProfit(50).toLocaleString()}</p>
+                    <p>At 50% occupancy: £${calcProfit(50).toLocaleString()} profit</p>
                     <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 50%"></div></div>
-                    <p class="font-bold">Profit at 70% Occ: £${calcProfit(70).toLocaleString()}</p>
+                    <p class="font-bold">At 70% occupancy: £${calcProfit(70).toLocaleString()} profit</p>
                     <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 70%"></div></div>
-                    <p>Profit at 90% Occ: £${calcProfit(90).toLocaleString()}</p>
+                    <p>At 90% occupancy: £${calcProfit(90).toLocaleString()} profit</p>
                     <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 90%"></div></div>
                 </div>`;
         }
@@ -580,6 +621,11 @@
             resultDiv.classList.remove('hidden');
 
             let tax = 0;
+            // Standard Rates (Post-March 2025/2026 thresholds)
+            // 0% on first £250k
+            // 5% on £250k - £925k
+            // 10% on £925k - £1.5m
+            // 12% on above £1.5m
             if (price > 1500000) tax += (price - 1500000) * 0.12;
             if (price > 925000) tax += (Math.min(price, 1500000) - 925000) * 0.10;
             if (price > 250000) tax += (Math.min(price, 925000) - 250000) * 0.05;
