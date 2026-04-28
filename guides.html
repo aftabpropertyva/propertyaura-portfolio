@@ -4,9 +4,8 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK Property Compliance Guides & MTD 2026 Insights | LetRight-PropertyAura</title>
-    <meta name="description" content="Expert guides on UK property compliance, MTD 2026, HMO licensing, and the Renters' Rights Act. Stay informed with LetRight-PropertyAura.">
-    <meta name="keywords" content="UK property guides, MTD 2026 guide, HMO licensing UK, Renters Rights Act 2026, landlord compliance guides">
+    <title>UK Landlord Guides & Resources | PropertyAura</title>
+    <meta name="description" content="Expert guides for UK landlords. Learn about MTD 2026, Renters' Rights Act, HMO licensing, and property management best practices.">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -25,6 +24,7 @@
                         gold: '#D4AF37',
                         softGray: '#F8F9FA',
                         darkSlate: '#2D3748',
+                        primaryBlue: '#2563eb',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -36,26 +36,25 @@
     </script>
 
     <style>
-        body { background-color: #F8F9FA; color: #2D3748; }
+        body { background-color: #F8F9FA; color: #2D3748; scroll-behavior: smooth; }
         .guide-card { transition: all 0.3s ease; }
         .guide-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
 <body class="font-sans">
 
-    <!-- Sticky Header -->
-    <header class="sticky top-0 z-50 bg-navy text-white shadow-md">
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 bg-navy text-white shadow-lg">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-serif font-black tracking-tight">
                 LetRight<span class="text-gold">-PropertyAura</span>
             </a>
             <div class="hidden md:flex space-x-8 font-medium">
                 <a href="index.html" class="hover:text-gold transition">Home</a>
-                <a href="index.html#calculators" class="hover:text-gold transition">Calculators</a>
-                <a href="products.html" class="hover:text-gold transition">Products</a>
-                <a href="templates.html" class="hover:text-gold transition">Templates</a>
+                <a href="templates.html" class="hover:text-gold transition">Notion Templates</a>
+                <a href="calculators.html" class="hover:text-gold transition">Calculators</a>
+                <a href="compliance.html" class="hover:text-gold transition">Compliance Kits</a>
                 <a href="guides.html" class="text-gold transition">Guides</a>
-                <a href="about.html" class="hover:text-gold transition">About</a>
                 <a href="contact.html" class="hover:text-gold transition">Contact</a>
             </div>
             <button class="md:hidden text-white focus:outline-none" id="menu-btn">
@@ -65,11 +64,10 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-navy px-6 pb-4 space-y-2">
             <a href="index.html" class="block py-2 hover:text-gold">Home</a>
-            <a href="index.html#calculators" class="block py-2 hover:text-gold">Calculators</a>
-            <a href="products.html" class="block py-2 hover:text-gold">Products</a>
-            <a href="templates.html" class="block py-2 hover:text-gold">Templates</a>
+            <a href="templates.html" class="block py-2 hover:text-gold">Notion Templates</a>
+            <a href="calculators.html" class="block py-2 hover:text-gold">Calculators</a>
+            <a href="compliance.html" class="block py-2 hover:text-gold">Compliance Kits</a>
             <a href="guides.html" class="block py-2 text-gold">Guides</a>
-            <a href="about.html" class="block py-2 hover:text-gold">About</a>
             <a href="contact.html" class="block py-2 hover:text-gold">Contact</a>
         </div>
     </header>
@@ -77,70 +75,52 @@
     <!-- Page Header -->
     <section class="bg-navy text-white py-16">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Expert <span class="text-gold">Property Guides</span></h1>
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto">In-depth analysis and actionable insights on the changing UK property landscape.</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Expert <span class="text-gold">Guides</span></h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">In-depth resources to help you navigate the changing UK property landscape.</p>
         </div>
     </section>
 
     <!-- Guides Grid -->
-    <section class="py-16">
+    <section class="py-16 bg-softGray">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Guide 1: MTD -->
-                <article class="guide-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
+                <!-- Guide 1 -->
+                <div class="guide-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
                     <div class="p-8 flex-1">
-                        <div class="flex items-center text-gold text-sm font-bold mb-4 uppercase tracking-widest">Compliance</div>
-                        <h2 class="text-2xl font-bold text-navy mb-4">Making Tax Digital 2026: A Landlord's Step-by-Step Guide</h2>
-                        <p class="text-gray-600 mb-6">Learn about the £50,000 threshold, quarterly deadlines, software options, and penalties for non-compliance under the new MTD regime.</p>
+                        <h3 class="text-xl font-bold text-navy mb-4">MTD 2026: The Complete Guide for Landlords</h3>
+                        <p class="text-gray-600 text-sm mb-6">Everything you need to know about Making Tax Digital for Income Tax starting April 2026.</p>
+                        <a href="guide-mtd.html" class="text-primaryBlue font-bold hover:underline">Read Full Guide &rarr;</a>
                     </div>
-                    <div class="px-8 pb-8">
-                        <a href="guide-mtd.html" class="text-navy font-bold hover:text-gold transition flex items-center">Read Full Guide &rarr;</a>
-                    </div>
-                </article>
+                </div>
 
-                <!-- Guide 2: HMO -->
-                <article class="guide-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
+                <!-- Guide 2 -->
+                <div class="guide-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
                     <div class="p-8 flex-1">
-                        <div class="flex items-center text-gold text-sm font-bold mb-4 uppercase tracking-widest">Investment</div>
-                        <h2 class="text-2xl font-bold text-navy mb-4">HMO Licensing Fees & Compliance in 2026</h2>
-                        <p class="text-gray-600 mb-6">Explain mandatory licensing, typical fee ranges, mandatory safety checks, and the high costs of non-compliance for HMO landlords.</p>
+                        <h3 class="text-xl font-bold text-navy mb-4">Renters' Rights Act 2026: What's Changing?</h3>
+                        <p class="text-gray-600 text-sm mb-6">A breakdown of the new legislation and how it affects tenancies, evictions, and standards.</p>
+                        <a href="guide-rra.html" class="text-primaryBlue font-bold hover:underline">Read Full Guide &rarr;</a>
                     </div>
-                    <div class="px-8 pb-8">
-                        <a href="guide-hmo.html" class="text-navy font-bold hover:text-gold transition flex items-center">Read Full Guide &rarr;</a>
-                    </div>
-                </article>
+                </div>
 
-                <!-- Guide 3: RRA -->
-                <article class="guide-card bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
+                <!-- Guide 3 -->
+                <div class="guide-card bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
                     <div class="p-8 flex-1">
-                        <div class="flex items-center text-gold text-sm font-bold mb-4 uppercase tracking-widest">Legal</div>
-                        <h2 class="text-2xl font-bold text-navy mb-4">Renters' Rights Act 2026: 5 Things to Do Before 31 May</h2>
-                        <p class="text-gray-600 mb-6">Understand the abolition of Section 21, the new rent increase process, and prohibited practices under the Renters' Rights Act.</p>
+                        <h3 class="text-xl font-bold text-navy mb-4">HMO Licensing & Fees: 2026 Update</h3>
+                        <p class="text-gray-600 text-sm mb-6">Understanding mandatory and additional licensing requirements across the UK.</p>
+                        <a href="guide-hmo.html" class="text-primaryBlue font-bold hover:underline">Read Full Guide &rarr;</a>
                     </div>
-                    <div class="px-8 pb-8">
-                        <a href="guide-rra.html" class="text-navy font-bold hover:text-gold transition flex items-center">Read Full Guide &rarr;</a>
-                    </div>
-                </article>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white py-12 border-t border-gray-200">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                <div class="text-2xl font-serif font-black text-navy mb-4 md:mb-0">
-                    LetRight<span class="text-gold">-PropertyAura</span>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/in/aftab-property-va/" target="_blank" class="text-gray-600 hover:text-navy">LinkedIn</a>
-                    <a href="https://letrightpropertyaura.gumroad.com/" target="_blank" class="text-gray-600 hover:text-navy">Gumroad</a>
-                </div>
+    <footer class="bg-navy text-white py-12 border-t border-white/10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-serif font-black mb-6">
+                LetRight<span class="text-gold">-PropertyAura</span>
             </div>
-            <div class="text-center text-gray-500 text-sm">
-                <p class="mb-4">&copy; 2026 LetRight-PropertyAura. All rights reserved.</p>
-                <p class="max-w-2xl mx-auto italic mb-4">"Calculators provide estimates only and do not constitute financial or legal advice. Always consult a qualified professional."</p>
-            </div>
+            <p class="text-gray-400 text-sm">&copy; 2026 LetRight-PropertyAura. All rights reserved.</p>
         </div>
     </footer>
 

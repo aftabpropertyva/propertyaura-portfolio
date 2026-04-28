@@ -4,25 +4,18 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free UK Property Calculators for Landlords | MTD, HMO, R2R Tools 2026</title>
-    <meta name="description" content="Free UK property calculators for landlords & investors. Calculate MTD eligibility, HMO yields, R2R cashflow, SDLT, CGT + compliance kits. Updated for 2026 regulations.">
-    <meta name="keywords" content="uk property calculator, landlord calculator, MTD calculator, HMO yield calculator, rent to rent calculator, SDLT calculator, property investment uk, making tax digital 2026">
+    <title>UK Property Management Tools & Templates | Aftab Ahmad</title>
+    <meta name="description" content="Free Notion templates, calculators & compliance guides for UK landlords. MTD-ready financial tracking, HMO licensing, BRRRR calculator & more.">
+    <meta name="keywords" content="UK property management, landlord templates, MTD calculator, HMO licensing, BRRRR calculator, property compliance, Notion templates">
     <meta name="author" content="Aftab Ahmad - PropertyAura">
-    <meta name="google-site-verification" content="wZ5IKOvhPYRfsc4Uwxvxx7JbBZM268MystLwRzOWKoA" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aftabpropertyva.github.io/propertyaura-portfolio/">
-    <meta property="og:title" content="Free UK Property Calculators for Landlords | MTD, HMO, R2R Tools 2026">
-    <meta property="og:description" content="Calculate MTD, HMO yields, R2R profits, SDLT, CGT for UK property investments. Free tools + professional compliance kits.">
+    <meta property="og:title" content="Free UK Property Management Tools | Aftab Ahmad">
+    <meta property="og:description" content="Professional Notion templates & calculators for UK landlords. Save 10+ hours/week managing your portfolio.">
     <meta property="og:image" content="https://aftabpropertyva.github.io/propertyaura-portfolio/og-image.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://aftabpropertyva.github.io/propertyaura-portfolio/">
-    <meta property="twitter:title" content="Free UK Property Calculators for Landlords">
-    <meta property="twitter:description" content="MTD, HMO, R2R, SDLT, CGT calculators for UK property investors">
-    <meta property="twitter:image" content="https://aftabpropertyva.github.io/propertyaura-portfolio/og-image.png">
+    <link rel="canonical" href="https://aftabpropertyva.github.io/propertyaura-portfolio/">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -41,6 +34,7 @@
                         gold: '#D4AF37',
                         softGray: '#F8F9FA',
                         darkSlate: '#2D3748',
+                        primaryBlue: '#2563eb',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -52,449 +46,153 @@
     </script>
 
     <style>
-        body { background-color: #F8F9FA; color: #2D3748; }
-        .calculator-card { transition: all 0.3s ease; }
-        .calculator-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
-        .modal { transition: opacity 0.25s ease; }
-        body.modal-active { overflow: hidden; }
+        body { background-color: #F8F9FA; color: #2D3748; scroll-behavior: smooth; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { color: #D4AF37; }
+        .hero-gradient { background: linear-gradient(135deg, #0A192F 0%, #112240 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
     </style>
-
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "LetRight-PropertyAura UK Property Calculators",
-      "url": "https://aftabpropertyva.github.io/propertyaura-portfolio/",
-      "description": "Professional UK property calculators for MTD 2026, HMO, R2R, SDLT, and more.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "author": {
-        "@type": "Person",
-        "name": "Aftab",
-        "jobTitle": "UK Property Compliance Expert"
-      }
-    }
-    </script>
 </head>
 <body class="font-sans">
 
-    <!-- Sticky Header -->
-    <header class="sticky top-0 z-50 bg-navy text-white shadow-md">
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 bg-navy text-white shadow-lg">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-serif font-black tracking-tight">
                 LetRight<span class="text-gold">-PropertyAura</span>
             </a>
             <div class="hidden md:flex space-x-8 font-medium">
-                <a href="index.html" class="hover:text-gold transition">Home</a>
-                <a href="#calculators" class="hover:text-gold transition">Calculators</a>
-                <a href="products.html" class="hover:text-gold transition">Products</a>
-                <a href="templates.html" class="hover:text-gold transition">Templates</a>
-                <a href="guides.html" class="hover:text-gold transition">Guides</a>
-                <a href="about.html" class="hover:text-gold transition">About</a>
-                <a href="contact.html" class="hover:text-gold transition">Contact</a>
+                <a href="index.html" class="nav-link text-gold">Home</a>
+                <a href="templates.html" class="nav-link">Notion Templates</a>
+                <a href="calculators.html" class="nav-link">Calculators</a>
+                <a href="compliance.html" class="nav-link">Compliance Kits</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="contact.html" class="nav-link">Contact</a>
             </div>
             <button class="md:hidden text-white focus:outline-none" id="menu-btn">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-navy px-6 pb-4 space-y-2">
-            <a href="index.html" class="block py-2 hover:text-gold">Home</a>
-            <a href="#calculators" class="block py-2 hover:text-gold">Calculators</a>
-            <a href="products.html" class="block py-2 hover:text-gold">Products</a>
-            <a href="templates.html" class="block py-2 hover:text-gold">Templates</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-navy px-6 pb-4 space-y-2 border-t border-white/10">
+            <a href="index.html" class="block py-2 text-gold">Home</a>
+            <a href="templates.html" class="block py-2 hover:text-gold">Notion Templates</a>
+            <a href="calculators.html" class="block py-2 hover:text-gold">Calculators</a>
+            <a href="compliance.html" class="block py-2 hover:text-gold">Compliance Kits</a>
             <a href="guides.html" class="block py-2 hover:text-gold">Guides</a>
-            <a href="about.html" class="block py-2 hover:text-gold">About</a>
             <a href="contact.html" class="block py-2 hover:text-gold">Contact</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-navy text-white py-20">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6">
-                Expert <span class="text-gold">UK Property Calculators</span> & Compliance Tools for 2026
+    <section class="hero-gradient text-white py-24 md:py-32 relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-primaryBlue opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-gold opacity-10 rounded-full blur-3xl"></div>
+        
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight">
+                Professional UK Property <br class="hidden md:block"> <span class="text-gold">Management Systems & Tools</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-10 text-gray-300 max-w-3xl mx-auto">
-                Professional-grade tools for UK landlords and investors. Stay compliant with MTD 2026 and maximize your portfolio returns.
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
+                Free Notion Templates, Calculators & Compliance Guides for UK Landlords
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#calculators" class="bg-gold text-navy px-8 py-4 rounded-lg font-bold text-lg hover:bg-white transition">Use Free Calculators</a>
-                <a href="products.html" class="border-2 border-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-navy transition">View Compliance Kits</a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="templates.html" class="bg-primaryBlue hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg">Get Free Templates</a>
+                <a href="calculators.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-lg font-bold text-lg transition">Browse Calculators</a>
             </div>
         </div>
     </section>
 
-    <!-- AdSense Leaderboard Placeholder (Hidden) -->
-    <!-- 
-    <div class="container mx-auto px-6 py-8 text-center">
-        <div class="bg-gray-200 border border-dashed border-gray-400 h-[90px] flex items-center justify-center text-gray-500">
-            AdSense Leaderboard Placeholder (728x90)
-        </div>
-    </div>
-    -->
-
-    <!-- Calculator Grid Section -->
-    <section id="calculators" class="py-16 bg-softGray">
+    <!-- Quick Access Section -->
+    <section class="py-20 bg-softGray">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-4">Professional UK Property Analyzers</h2>
-                <p class="text-gray-600">Accurate, expert-verified tools updated for the latest 2026 UK property regulations.</p>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1: Notion Templates -->
+                <a href="templates.html" class="card-hover bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                    <div class="text-5xl mb-6">🎯</div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Notion Templates</h3>
+                    <p class="text-gray-600 text-sm mb-4">8 Free Professional Templates</p>
+                    <span class="text-primaryBlue font-bold mt-auto">Click to Browse &rarr;</span>
+                </a>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- MTD Calculator -->
-                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('mtd-modal')">
-                    <div class="text-gold mb-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">MTD 2026 Forecast Tool</h3>
-                    <p class="text-gray-600 text-sm">Determine if you meet the Making Tax Digital 2026 threshold and calculate your estimated quarterly tax obligations.</p>
-                    <a href="guide-mtd.html" class="text-gold text-xs font-bold hover:underline mt-2 block">Learn more about MTD in our guide &rarr;</a>
-                </div>
+                <!-- Card 2: Property Calculators -->
+                <a href="calculators.html" class="card-hover bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                    <div class="text-5xl mb-6">🧮</div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Property Calculators</h3>
+                    <p class="text-gray-600 text-sm mb-4">MTD, HMO, BRRRR, SDLT Calculators</p>
+                    <span class="text-primaryBlue font-bold mt-auto">Calculate Now &rarr;</span>
+                </a>
 
-                <!-- R2R Calculator -->
-                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('r2r-modal')">
-                    <div class="text-gold mb-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">Rent-to-Rent (R2R) Analyzer</h3>
-                    <p class="text-gray-600 text-sm">Professional R2R deal analyzer. Calculate net monthly cashflow, annual profit, and Return on Capital Employed (ROCE).</p>
-                    <a href="guide-rra.html" class="text-gold text-xs font-bold hover:underline mt-2 block">Learn more about R2R in our guide &rarr;</a>
-                </div>
+                <!-- Card 3: Compliance Kits -->
+                <a href="compliance.html" class="card-hover bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                    <div class="text-5xl mb-6">✅</div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Compliance Kits</h3>
+                    <p class="text-gray-600 text-sm mb-4">Gas Safety, EICR, EPC Tracking</p>
+                    <span class="text-primaryBlue font-bold mt-auto">View Kits &rarr;</span>
+                </a>
 
-                <!-- HMO Calculator -->
-                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('hmo-modal')">
-                    <div class="text-gold mb-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">HMO Yield & Profit Engine</h3>
-                    <p class="text-gray-600 text-sm">Analyze gross and net yields for HMO properties. Includes licensing fee amortization and maintenance reserves.</p>
-                    <a href="guide-hmo.html" class="text-gold text-xs font-bold hover:underline mt-2 block">Learn more about HMO in our guide &rarr;</a>
-                </div>
-
-                <!-- SA Calculator -->
-                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('sa-modal')">
-                    <div class="text-gold mb-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">SA Occupancy Stress-Test</h3>
-                    <p class="text-gray-600 text-sm">Stress-test your Serviced Accommodation (SA) business model at various occupancy levels (50%, 70%, 90%).</p>
-                </div>
-
-                <!-- SDLT Calculator -->
-                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('sdlt-modal')">
-                    <div class="text-gold mb-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">UK SDLT Calculator 2026</h3>
-                    <p class="text-gray-600 text-sm">Calculate Stamp Duty Land Tax (SDLT) for residential purchases, including BTL and second home surcharges.</p>
-                </div>
-
-                <!-- CGT Calculator -->
-                <div class="calculator-card bg-white p-8 rounded-xl shadow-sm border border-gray-100 cursor-pointer" onclick="openModal('cgt-modal')">
-                    <div class="text-gold mb-4">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-2">Property CGT Estimator</h3>
-                    <p class="text-gray-600 text-sm">Estimate Capital Gains Tax (CGT) on UK property sales. Accounts for Private Residence Relief and annual allowances.</p>
-                </div>
+                <!-- Card 4: Free Guides -->
+                <a href="guides.html" class="card-hover bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+                    <div class="text-5xl mb-6">📚</div>
+                    <h3 class="text-xl font-bold text-navy mb-2">Free Guides</h3>
+                    <p class="text-gray-600 text-sm mb-4">UK Landlord Guides & Resources</p>
+                    <span class="text-primaryBlue font-bold mt-auto">Read Guides &rarr;</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Expertise Section (E-E-A-T) -->
-    <section class="py-16 bg-white">
+    <!-- About Section -->
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-6">Why Trust Our Property Tools?</h2>
-                    <p class="text-gray-600 mb-6">
-                        As a <strong>Senior Full-Stack Engineer & UK Property Compliance Expert</strong>, I build tools that combine technical precision with deep industry knowledge. Every calculator on this platform is verified against current <strong>HMRC</strong> and <strong>Gov.uk</strong> guidelines.
+            <div class="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
+                <div class="w-64 h-64 md:w-80 md:h-80 flex-shrink-0 relative">
+                    <div class="absolute inset-0 bg-gold rounded-2xl rotate-6"></div>
+                    <img src="og-image.png" alt="Aftab Ahmad" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl relative z-10">
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy mb-6">About Aftab Ahmad</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        As a Senior Full-Stack Engineer and UK Property Compliance Expert, I specialize in building digital systems that help landlords scale their portfolios with confidence. My tools are designed to bridge the gap between complex UK property legislation and practical, efficient management.
                     </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-gold mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span>Updated for 2026 UK Tax Thresholds</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-gold mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span>Expert-Verified Compliance Logic</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-6 h-6 text-gold mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span>Used by 5,000+ UK Landlords & Investors</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 bg-softGray p-8 rounded-2xl border border-gray-100">
-                    <h3 class="text-xl font-bold text-navy mb-4">MTD 2026 Compliance Alert</h3>
-                    <p class="text-sm text-gray-600 mb-4">
-                        From 6 April 2026, landlords with gross annual income over £50,000 must report quarterly under Making Tax Digital. Our tools help you forecast these obligations today.
-                    </p>
-                    <a href="guides.html" class="text-gold font-bold hover:underline">Read our MTD 2026 Guide &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lead Capture Section -->
-    <section class="py-20 bg-navy text-white">
-        <div class="container mx-auto px-6 max-w-4xl text-center">
-            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">Download the Free 2026 Compliance Mistakes Guide</h2>
-            <p class="text-gray-300 mb-10">Stay ahead of the Renters' Rights Act and MTD 2026. Join our community of compliant UK property investors.</p>
-            <form id="lead-form" class="flex flex-col md:flex-row gap-4">
-                <input type="text" id="lead-name" placeholder="Your Name" required class="flex-1 px-6 py-4 rounded-lg text-navy focus:outline-none focus:ring-2 focus:ring-gold">
-                <input type="email" id="lead-email" placeholder="Your Email" required class="flex-1 px-6 py-4 rounded-lg text-navy focus:outline-none focus:ring-2 focus:ring-gold">
-                <button type="submit" class="bg-gold text-navy px-8 py-4 rounded-lg font-bold hover:bg-white transition">Get Free Guide</button>
-            </form>
-            <p id="form-message" class="mt-4 text-gold font-medium hidden"></p>
-        </div>
-    </section>
-
-    <!-- SEO Content Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <h2 class="text-3xl font-serif font-bold text-navy mb-6">Navigating the 2026 UK Property Landscape</h2>
-            <div class="prose prose-lg text-gray-600">
-                <p class="mb-4">The UK property market is entering a period of significant regulatory change. The most pressing deadline for landlords is <strong>6 April 2026</strong>, which marks the start of <strong>Making Tax Digital (MTD)</strong> for Income Tax. This mandate requires any landlord with a gross annual rental income of over £50,000 to keep digital records and submit quarterly updates to HMRC. Our <a href="guide-mtd.html" class="text-gold font-bold hover:underline">MTD 2026 Guide</a> provides a step-by-step roadmap to ensure you're prepared.</p>
-                <p class="mb-4">These tools are designed specifically for <strong>UK landlords, property investors, and professional property managers</strong> who need accurate, real-time data to make informed decisions. Whether you're analyzing a new <a href="guide-hmo.html" class="text-gold font-bold hover:underline">HMO deal</a> or preparing for the <a href="guide-rra.html" class="text-gold font-bold hover:underline">Renters' Rights Act</a>, our calculators provide the precision required in today's market.</p>
-                <p class="mb-4">As a UK Landlord Compliance Specialist, I, <a href="about.html" class="text-gold font-bold hover:underline">Aftab Ahmad</a>, have developed these resources to bridge the gap between complex legislation and practical property management. My goal is to help you avoid costly fines and scale your portfolio with confidence.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-16 bg-softGray">
-        <div class="container mx-auto px-6 max-w-3xl">
-            <h2 class="text-3xl font-serif font-bold text-navy mb-10 text-center">Frequently Asked Questions</h2>
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-navy mb-2">What is Making Tax Digital (MTD)?</h3>
-                    <p class="text-gray-600 text-sm">MTD is a government initiative to move the UK tax system to a digital-first model. For landlords, it means replacing the annual tax return with quarterly digital updates using HMRC-compatible software.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-navy mb-2">Do I need an HMO licence?</h3>
-                    <p class="text-gray-600 text-sm">Mandatory licensing applies if you have 5 or more occupants from 2 or more households. However, many councils have additional schemes for smaller properties. Always check with your local authority.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="font-bold text-navy mb-2">How accurate are these calculators?</h3>
-                    <p class="text-gray-600 text-sm">Our calculators are updated for the 2026 tax year and verified against current HMRC guidelines. However, they provide estimates only and should not replace professional financial or legal advice.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold">📧</span>
+                            <a href="mailto:aftab.propertyva@gmail.com" class="text-navy font-semibold hover:text-primaryBlue transition">aftab.propertyva@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold">🔗</span>
+                            <a href="https://www.linkedin.com/in/aftab-property-va/" target="_blank" class="text-navy font-semibold hover:text-primaryBlue transition">LinkedIn Profile</a>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-gold">🏠</span>
+                            <a href="https://letright.notion.site/Aftab-Ahmad-UK-Property-Management-Expert-34aa67b178348136bd4eda20aedaf48f" target="_blank" class="text-navy font-semibold hover:text-primaryBlue transition">Notion Expert Hub</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white py-12 border-t border-gray-200">
+    <footer class="bg-navy text-white py-12 border-t border-white/10">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
-                <div class="text-2xl font-serif font-black text-navy mb-4 md:mb-0">
+                <div class="text-2xl font-serif font-black mb-4 md:mb-0">
                     LetRight<span class="text-gold">-PropertyAura</span>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="https://www.linkedin.com/in/aftab-property-va/" target="_blank" class="text-gray-600 hover:text-navy">LinkedIn</a>
-                    <a href="https://letrightpropertyaura.gumroad.com/" target="_blank" class="text-gray-600 hover:text-navy">Gumroad</a>
+                    <a href="https://www.linkedin.com/in/aftab-property-va/" target="_blank" class="hover:text-gold transition">LinkedIn</a>
+                    <a href="https://letrightpropertyaura.gumroad.com/" target="_blank" class="hover:text-gold transition">Gumroad</a>
                 </div>
             </div>
-            <div class="text-center text-gray-500 text-sm">
+            <div class="text-center text-gray-400 text-sm">
                 <p class="mb-4">&copy; 2026 LetRight-PropertyAura. All rights reserved.</p>
-                <p class="max-w-2xl mx-auto italic mb-4">"Calculators provide estimates only and do not constitute financial or legal advice. Always consult a qualified professional."</p>
+                <p class="max-w-2xl mx-auto italic">"Tools provide a framework for organization and do not constitute financial or legal advice. Always consult a qualified professional."</p>
             </div>
         </div>
     </footer>
-
-    <!-- Modals for Calculators -->
-    <!-- MTD Modal -->
-    <div id="mtd-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('mtd-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold text-navy">MTD 2026 Forecast</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('mtd-modal')">
-                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Annual Gross Rental Income (£)</label>
-                        <input type="number" id="mtd-income" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="55000">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Total Allowable Expenses (£)</label>
-                        <input type="number" id="mtd-expenses" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border" placeholder="15000">
-                    </div>
-                    <button onclick="calculateMTD()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="mtd-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- R2R Modal -->
-    <div id="r2r-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('r2r-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold text-navy">R2R Master Analyzer</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('r2r-modal')">
-                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Guaranteed Rent to Landlord (monthly £)</label>
-                        <input type="number" id="r2r-rent-out" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Number of Rooms</label>
-                        <input type="number" id="r2r-rooms" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Avg Rent per Room (monthly £)</label>
-                        <input type="number" id="r2r-rent-in" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Management/Cleaning/Utilities (monthly £)</label>
-                        <input type="number" id="r2r-costs" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <button onclick="calculateR2R()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="r2r-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- HMO Modal -->
-    <div id="hmo-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('hmo-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold text-navy">HMO Yield Engine</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('hmo-modal')">
-                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
-                        <input type="number" id="hmo-price" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Refurb Cost (£)</label>
-                        <input type="number" id="hmo-refurb" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Total Monthly Rent (£)</label>
-                        <input type="number" id="hmo-rent" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <button onclick="calculateHMO()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="hmo-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SA Modal -->
-    <div id="sa-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('sa-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold text-navy">SA Stress-Test</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('sa-modal')">
-                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Nightly Rate (£)</label>
-                        <input type="number" id="sa-rate" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Cleaning Fee per booking (£)</label>
-                        <input type="number" id="sa-cleaning" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Monthly Fixed Costs (£)</label>
-                        <input type="number" id="sa-fixed" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <button onclick="calculateSA()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="sa-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- SDLT Modal -->
-    <div id="sdlt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('sdlt-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold text-navy">SDLT Calculator</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('sdlt-modal')">
-                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
-                        <input type="number" id="sdlt-price" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="sdlt-btl" class="h-4 w-4 text-navy border-gray-300 rounded">
-                        <label class="ml-2 block text-sm text-gray-700">BTL / Second Home? (+3%)</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="checkbox" id="sdlt-ftb" class="h-4 w-4 text-navy border-gray-300 rounded">
-                        <label class="ml-2 block text-sm text-gray-700">First-time Buyer?</label>
-                    </div>
-                    <button onclick="calculateSDLT()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="sdlt-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CGT Modal -->
-    <div id="cgt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('cgt-modal')"></div>
-        <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-            <div class="modal-content py-4 text-left px-6">
-                <div class="flex justify-between items-center pb-3">
-                    <p class="text-2xl font-bold text-navy">CGT Estimator</p>
-                    <div class="modal-close cursor-pointer z-50" onclick="closeModal('cgt-modal')">
-                        <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path></svg>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Purchase Price (£)</label>
-                        <input type="number" id="cgt-purchase" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Sale Price (£)</label>
-                        <input type="number" id="cgt-sale" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Ownership Years</label>
-                        <input type="number" id="cgt-years" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Private Residence Relief Years</label>
-                        <input type="number" id="cgt-relief" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm p-2 border">
-                    </div>
-                    <button onclick="calculateCGT()" class="w-full bg-navy text-white py-2 rounded-md hover:bg-gold hover:text-navy transition font-bold">Calculate</button>
-                    <div id="cgt-result" class="mt-4 p-4 bg-softGray rounded-md hidden"></div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Mobile Menu Toggle
@@ -502,178 +200,6 @@
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-        });
-
-        // Modal Logic
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.classList.add('modal-active');
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            document.body.classList.remove('modal-active');
-        }
-
-        // Calculator Logic
-        function calculateMTD() {
-            const income = parseFloat(document.getElementById('mtd-income').value) || 0;
-            const expenses = parseFloat(document.getElementById('mtd-expenses').value) || 0;
-            const resultDiv = document.getElementById('mtd-result');
-            resultDiv.classList.remove('hidden');
-            
-            let html = '';
-            if (income > 50000) {
-                const taxable = income - expenses;
-                let tax = 0;
-                if (taxable > 125140) {
-                    tax = (taxable - 125140) * 0.45 + (125140 - 50270) * 0.40 + (50270 - 12570) * 0.20;
-                } else if (taxable > 50270) {
-                    tax = (taxable - 50270) * 0.40 + (50270 - 12570) * 0.20;
-                } else if (taxable > 12570) {
-                    tax = (taxable - 12570) * 0.20;
-                }
-                
-                html = `<p class="text-red-600 font-bold">Action Required: You fall under MTD 2026 Mandate.</p>
-                        <p class="mt-2">Estimated Tax: £${tax.toLocaleString()}</p>
-                        <p class="mt-2 font-semibold">2026 Deadlines:</p>
-                        <ul class="list-disc ml-5 text-sm">
-                            <li>5 Aug 2026</li>
-                            <li>5 Nov 2026</li>
-                            <li>5 Feb 2027</li>
-                            <li>5 May 2027</li>
-                        </ul>`;
-            } else {
-                html = `<p class="text-green-600 font-bold">Not currently required for MTD 2026.</p>
-                        <p class="mt-2 text-sm">Income is below the £50,000 threshold. However, it is recommended to keep digital records for future compliance.</p>`;
-            }
-            resultDiv.innerHTML = html;
-        }
-
-        function calculateR2R() {
-            const rentOut = parseFloat(document.getElementById('r2r-rent-out').value) || 0;
-            const rooms = parseFloat(document.getElementById('r2r-rooms').value) || 0;
-            const rentIn = parseFloat(document.getElementById('r2r-rent-in').value) || 0;
-            const costs = parseFloat(document.getElementById('r2r-costs').value) || 0;
-            const resultDiv = document.getElementById('r2r-result');
-            resultDiv.classList.remove('hidden');
-
-            const monthlyCashflow = (rooms * rentIn) - rentOut - costs;
-            const annualCashflow = monthlyCashflow * 12;
-            const initialCapital = rentOut * 2;
-            const roce = (annualCashflow / initialCapital) * 100;
-
-            resultDiv.innerHTML = `<p class="font-bold text-navy">Net Monthly Cashflow (£): £${monthlyCashflow.toLocaleString()}</p>
-                                   <p>Annual Cashflow (£): £${annualCashflow.toLocaleString()}</p>
-                                   <p>ROCE (%): ${roce.toFixed(2)}%</p>`;
-        }
-
-        function calculateHMO() {
-            const price = parseFloat(document.getElementById('hmo-price').value) || 0;
-            const refurb = parseFloat(document.getElementById('hmo-refurb').value) || 0;
-            const rent = parseFloat(document.getElementById('hmo-rent').value) || 0;
-            const resultDiv = document.getElementById('hmo-result');
-            resultDiv.classList.remove('hidden');
-
-            const totalCost = price + refurb;
-            const annualRent = rent * 12;
-            const grossYield = (annualRent / totalCost) * 100;
-            
-            const licensing = 15; // £900 / 60 months
-            const maintenance = rent * 0.10;
-            const netAnnual = (rent - licensing - maintenance) * 12;
-            const netYield = (netAnnual / totalCost) * 100;
-
-            resultDiv.innerHTML = `<p class="font-bold text-navy">Gross Yield: ${grossYield.toFixed(2)}%</p>
-                                   <p>Net Yield: ${netYield.toFixed(2)}%</p>
-                                   <p class="text-xs mt-2 text-gray-500">*Includes £15/mo licensing deduction & 10% maintenance reserve.</p>`;
-        }
-
-        function calculateSA() {
-            const rate = parseFloat(document.getElementById('sa-rate').value) || 0;
-            const cleaning = parseFloat(document.getElementById('sa-cleaning').value) || 0;
-            const fixed = parseFloat(document.getElementById('sa-fixed').value) || 0;
-            const resultDiv = document.getElementById('sa-result');
-            resultDiv.classList.remove('hidden');
-
-            const calcProfit = (occ) => {
-                const nights = 30 * (occ / 100);
-                const bookings = nights / 1; // Assume 1 cleaning per night for stress test or adjust as needed
-                // Re-evaluating based on expected output: 150*15 - 50*15 - 3000 = 2250 - 750 - 3000 = -1500 (Wrong)
-                // If 50% occ is 15 days: 150*15 = 2250. If cleaning is per night: 50*15 = 750. Total 3000. 3000-3000 = 0.
-                // So bookings = nights.
-                return (nights * rate) - (nights * cleaning) - fixed;
-            };
-
-            resultDiv.innerHTML = `
-                <div class="space-y-2">
-                    <p>At 50% occupancy: £${calcProfit(50).toLocaleString()} profit</p>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 50%"></div></div>
-                    <p class="font-bold">At 70% occupancy: £${calcProfit(70).toLocaleString()} profit</p>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 70%"></div></div>
-                    <p>At 90% occupancy: £${calcProfit(90).toLocaleString()} profit</p>
-                    <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-gold h-2.5 rounded-full" style="width: 90%"></div></div>
-                </div>`;
-        }
-
-        function calculateSDLT() {
-            const price = parseFloat(document.getElementById('sdlt-price').value) || 0;
-            const isBTL = document.getElementById('sdlt-btl').checked;
-            const isFTB = document.getElementById('sdlt-ftb').checked;
-            const resultDiv = document.getElementById('sdlt-result');
-            resultDiv.classList.remove('hidden');
-
-            let tax = 0;
-            // Standard Rates (Post-March 2025/2026 thresholds)
-            // 0% on first £250k
-            // 5% on £250k - £925k
-            // 10% on £925k - £1.5m
-            // 12% on above £1.5m
-            if (price > 1500000) tax += (price - 1500000) * 0.12;
-            if (price > 925000) tax += (Math.min(price, 1500000) - 925000) * 0.10;
-            if (price > 250000) tax += (Math.min(price, 925000) - 250000) * 0.05;
-            
-            if (isBTL) tax += price * 0.03;
-            
-            resultDiv.innerHTML = `<p class="text-2xl font-bold text-navy">Total SDLT: £${tax.toLocaleString()}</p>`;
-        }
-
-        function calculateCGT() {
-            const purchase = parseFloat(document.getElementById('cgt-purchase').value) || 0;
-            const sale = parseFloat(document.getElementById('cgt-sale').value) || 0;
-            const years = parseFloat(document.getElementById('cgt-years').value) || 1;
-            const relief = parseFloat(document.getElementById('cgt-relief').value) || 0;
-            const resultDiv = document.getElementById('cgt-result');
-            resultDiv.classList.remove('hidden');
-
-            const gain = sale - purchase;
-            const reliefAmount = (relief / years) * gain;
-            const allowance = 12300;
-            const taxableGain = Math.max(0, gain - reliefAmount - allowance);
-            const tax = taxableGain * 0.24; // Higher rate property
-
-            resultDiv.innerHTML = `<p>Total Gain: £${gain.toLocaleString()}</p>
-                                   <p>Taxable Gain (after £12,300 allowance): £${taxableGain.toLocaleString()}</p>
-                                   <p class="text-xl font-bold text-navy">Est. Tax (24%): £${tax.toLocaleString()}</p>`;
-        }
-
-        // Lead Form Simulation
-        document.getElementById('lead-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('lead-name').value;
-            const email = document.getElementById('lead-email').value;
-            const msg = document.getElementById('form-message');
-            
-            // Store in localStorage
-            const leads = JSON.parse(localStorage.getItem('leads') || '[]');
-            leads.push({ name, email, date: new Date().toISOString() });
-            localStorage.setItem('leads', JSON.stringify(leads));
-
-            msg.textContent = "Thank you – check your inbox!";
-            msg.classList.remove('hidden');
-            e.target.reset();
         });
     </script>
 </body>
