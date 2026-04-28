@@ -97,9 +97,11 @@
             <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10">
                 Free Notion Templates, Calculators & Compliance Guides for UK Landlords
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="templates.html" class="bg-primaryBlue hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg transition shadow-lg">Get Free Templates</a>
-                <a href="calculators.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-lg font-bold text-lg transition">Browse Calculators</a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                <a href="templates.html" class="bg-primaryBlue hover:bg-blue-700 text-white px-6 py-4 rounded-lg font-bold text-lg transition shadow-lg flex items-center justify-center">Get Free Templates</a>
+                <a href="calculators.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-4 rounded-lg font-bold text-lg transition flex items-center justify-center">Browse Calculators</a>
+                <a href="compliance.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-4 rounded-lg font-bold text-lg transition flex items-center justify-center">Compliance Kits</a>
+                <a href="guides.html" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-6 py-4 rounded-lg font-bold text-lg transition flex items-center justify-center">Guides</a>
             </div>
         </div>
     </section>
@@ -117,11 +119,18 @@
                 </a>
 
                 <!-- Card 2: Property Calculators -->
-                <a href="calculators.html" class="card-hover bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
-                    <div class="text-5xl mb-6">🧮</div>
-                    <h3 class="text-xl font-bold text-navy mb-2">Property Calculators</h3>
-                    <p class="text-gray-600 text-sm mb-4">MTD, HMO, BRRRR, SDLT Calculators</p>
-                    <span class="text-primaryBlue font-bold mt-auto">Calculate Now &rarr;</span>
+                <a href="calculators.html" class="card-hover bg-white p-0 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center overflow-hidden">
+                    <div class="w-full h-48 relative">
+                        <img src="calculator-hero.jpg" alt="Property Calculators" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-navy/40 flex items-center justify-center">
+                            <div class="text-5xl">🧮</div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-navy mb-2">Property Calculators</h3>
+                        <p class="text-gray-600 text-sm mb-4">MTD, HMO, BRRRR, SDLT Calculators</p>
+                        <span class="text-primaryBlue font-bold mt-auto">Calculate Now &rarr;</span>
+                    </div>
                 </a>
 
                 <!-- Card 3: Compliance Kits -->
