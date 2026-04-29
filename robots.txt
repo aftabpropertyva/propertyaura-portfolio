@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://aftabpropertyva.github.io/propertyaura-portfolio/sitemap.xml
