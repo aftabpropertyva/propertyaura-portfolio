@@ -15,6 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
+    <!-- External Libraries for File Parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -33,6 +37,8 @@
                 }
             }
         }
+        // Initialize PDF.js
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     </script>
 
     <style>
@@ -41,6 +47,8 @@
         .nav-link:hover { color: #D4AF37; }
         .hero-gradient { background: linear-gradient(135deg, #0A192F 0%, #112240 100%); }
         .tab-active { border-bottom: 4px solid #D4AF37; color: #0A192F; font-weight: 700; }
+        .drop-zone { border: 2px dashed #cbd5e1; transition: all 0.3s ease; }
+        .drop-zone.drag-over { border-color: #D4AF37; background-color: #fef3c7; }
     </style>
 </head>
 <body class="font-sans">
@@ -124,6 +132,20 @@
                             <button onclick="analyzeHeadline()" class="w-full bg-navy hover:bg-blue-900 text-white font-bold py-4 rounded-lg transition shadow-lg">
                                 Analyze Headline
                             </button>
+                            
+                            <!-- Suggested Headline Section -->
+                            <div class="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-lg">
+                                <h4 class="text-sm font-bold text-primaryBlue mb-2 flex items-center gap-1">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    Try this high-scoring headline:
+                                </h4>
+                                <p id="suggested-headline" class="text-sm text-gray-700 italic mb-3">
+                                    "Senior Property Manager | Expert in HMO Compliance & MTD | Helping UK Landlords Scale Portfolios with AI Automation"
+                                </p>
+                                <button onclick="useSuggestedHeadline()" class="text-xs font-bold text-primaryBlue hover:underline">
+                                    Click to use this headline &rarr;
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div id="headline-result" class="hidden bg-softGray rounded-xl p-6 border border-gray-200">
@@ -154,19 +176,46 @@
                         </h3>
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-2">Job Description</label>
-                            <textarea id="jd-input" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none" placeholder="Paste the job description here..."></textarea>
+                            <textarea id="jd-input" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none" placeholder="Paste the job description here..."></textarea>
                         </div>
+                        
+                        <!-- File Upload Zone -->
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">Resume Text</label>
-                            <textarea id="resume-input" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none" placeholder="Paste your resume plain text here..."></textarea>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Upload CV (PDF or DOCX)</label>
+                            <div id="drop-zone" class="drop-zone rounded-lg p-8 text-center cursor-pointer hover:bg-gray-50">
+                                <input type="file" id="file-input" class="hidden" accept=".pdf,.docx">
+                                <div id="upload-prompt">
+                                    <svg class="w-10 h-10 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                                    <p class="text-sm text-gray-600">Drag & drop your CV here or <span class="text-primaryBlue font-bold">browse</span></p>
+                                    <p class="text-xs text-gray-400 mt-1">Supports PDF and Word (.docx)</p>
+                                </div>
+                                <div id="file-info" class="hidden">
+                                    <p class="text-sm font-bold text-navy" id="file-name"></p>
+                                    <button onclick="removeFile(event)" class="text-xs text-red-500 hover:underline mt-2">Remove file</button>
+                                </div>
+                            </div>
                         </div>
-                        <button onclick="analyzeResume()" class="w-full bg-navy hover:bg-blue-900 text-white font-bold py-4 rounded-lg transition shadow-lg">
-                            Run ATS Analysis
+
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                                <div class="w-full border-t border-gray-200"></div>
+                            </div>
+                            <div class="relative flex justify-center">
+                                <span class="px-2 bg-white text-xs text-gray-500 uppercase">Or paste text</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <textarea id="resume-input" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none" placeholder="Paste your resume plain text here..."></textarea>
+                        </div>
+                        <button id="analyze-resume-btn" onclick="analyzeResume()" class="w-full bg-navy hover:bg-blue-900 text-white font-bold py-4 rounded-lg transition shadow-lg flex items-center justify-center gap-2">
+                            <span id="btn-text">Run ATS Analysis</span>
+                            <div id="btn-loader" class="hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                         </button>
                     </div>
                     <div id="resume-result" class="hidden bg-softGray rounded-xl p-6 border border-gray-200">
                         <div class="text-center mb-8">
-                            <div class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Match Score</div>
+                            <div class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">ATS Match Score</div>
                             <div id="resume-score" class="text-6xl font-black text-navy">0%</div>
                             <div class="w-full bg-gray-200 h-3 rounded-full mt-4 overflow-hidden">
                                 <div id="resume-gauge" class="h-full bg-primaryBlue transition-all duration-1000" style="width: 0%"></div>
@@ -180,7 +229,7 @@
                                 </div>
                             </div>
                             <div>
-                                <h4 class="font-bold text-navy border-b border-gray-200 pb-2 mb-3">Bullet Point Suggestions</h4>
+                                <h4 class="font-bold text-navy border-b border-gray-200 pb-2 mb-3">ATS Optimization Tips</h4>
                                 <ul id="resume-suggestions" class="space-y-2 text-sm text-gray-600">
                                     <!-- Suggestions will be injected here -->
                                 </ul>
@@ -254,6 +303,12 @@
         const genericWords = ["results-driven", "passionate", "hardworking", "team player", "self-motivated", "dynamic", "experienced", "motivated"];
         const valueWords = ["help", "solve", "support", "save time", "grow", "scale", "achieve", "improve", "ensure", "protect"];
 
+        function useSuggestedHeadline() {
+            const suggested = document.getElementById('suggested-headline').innerText.replace(/"/g, '');
+            document.getElementById('headline-input').value = suggested;
+            analyzeHeadline();
+        }
+
         function analyzeHeadline() {
             const text = document.getElementById('headline-input').value.trim();
             const industry = document.getElementById('industry').value;
@@ -307,13 +362,104 @@
             document.getElementById('headline-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        // Resume Analysis Logic
-        const stopWords = new Set(["this", "that", "with", "from", "your", "their", "about", "would", "could", "should", "there", "where", "which"]);
+        // File Upload Logic
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const uploadPrompt = document.getElementById('upload-prompt');
+        const fileInfo = document.getElementById('file-info');
+        const fileName = document.getElementById('file-name');
+        let uploadedText = "";
 
-        function analyzeResume() {
+        dropZone.onclick = () => fileInput.click();
+
+        dropZone.ondragover = (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        };
+
+        dropZone.ondragleave = () => {
+            dropZone.classList.remove('drag-over');
+        };
+
+        dropZone.ondrop = (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            if (e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        };
+
+        fileInput.onchange = (e) => {
+            if (e.target.files.length) {
+                handleFile(e.target.files[0]);
+            }
+        };
+
+        function removeFile(e) {
+            e.stopPropagation();
+            fileInput.value = "";
+            uploadedText = "";
+            fileInfo.classList.add('hidden');
+            uploadPrompt.classList.remove('hidden');
+        }
+
+        async function handleFile(file) {
+            const ext = file.name.split('.').pop().toLowerCase();
+            if (ext !== 'pdf' && ext !== 'docx') {
+                alert("Please upload a PDF or DOCX file.");
+                return;
+            }
+
+            fileName.innerText = file.name;
+            uploadPrompt.classList.add('hidden');
+            fileInfo.classList.remove('hidden');
+
+            const reader = new FileReader();
+            if (ext === 'pdf') {
+                reader.onload = async function() {
+                    const typedarray = new Uint8Array(this.result);
+                    const pdf = await pdfjsLib.getDocument(typedarray).promise;
+                    let text = "";
+                    for (let i = 1; i <= pdf.numPages; i++) {
+                        const page = await pdf.getPage(i);
+                        const content = await page.getTextContent();
+                        text += content.items.map(item => item.str).join(" ") + "\n";
+                    }
+                    uploadedText = text;
+                };
+                reader.readAsArrayBuffer(file);
+            } else {
+                reader.onload = function(e) {
+                    const arrayBuffer = e.target.result;
+                    mammoth.extractRawText({arrayBuffer: arrayBuffer})
+                        .then(function(result) {
+                            uploadedText = result.value;
+                        });
+                };
+                reader.readAsArrayBuffer(file);
+            }
+        }
+
+        // Resume Analysis Logic
+        const stopWords = new Set(["this", "that", "with", "from", "your", "their", "about", "would", "could", "should", "there", "where", "which", "and", "the", "for"]);
+
+        async function analyzeResume() {
             const jd = document.getElementById('jd-input').value.trim();
-            const resume = document.getElementById('resume-input').value.trim();
-            if (!jd || !resume) return alert("Please fill in both Job Description and Resume");
+            const pastedResume = document.getElementById('resume-input').value.trim();
+            const resume = uploadedText || pastedResume;
+
+            if (!jd || !resume) return alert("Please provide a Job Description and either upload a CV or paste your resume text.");
+
+            // UI Loading State
+            const btn = document.getElementById('analyze-resume-btn');
+            const btnText = document.getElementById('btn-text');
+            const loader = document.getElementById('btn-loader');
+            btn.disabled = true;
+            btnText.innerText = "Analyzing...";
+            loader.classList.remove('hidden');
+
+            // Simulate processing time for better UX
+            await new Promise(resolve => setTimeout(resolve, 800));
 
             // 1. Keyword Extraction from JD
             const jdWords = jd.toLowerCase().split(/\W+/).filter(w => w.length > 3 && !stopWords.has(w));
@@ -322,13 +468,13 @@
             // 2. Keyword Matching
             const matched = uniqueJdWords.filter(word => resume.toLowerCase().includes(word));
             const matchPercent = Math.round((matched.length / uniqueJdWords.length) * 100);
-            const missing = uniqueJdWords.filter(word => !resume.toLowerCase().includes(word)).slice(0, 5);
+            const missing = uniqueJdWords.filter(word => !resume.toLowerCase().includes(word)).slice(0, 8);
 
-            // 3. Bullet Point Quality
-            const lines = resume.split('\n').filter(l => l.trim().length > 10);
-            const actionVerbs = ["managed", "built", "created", "reduced", "increased", "developed", "led", "implemented", "saved", "improved"];
+            // 3. ATS Optimization Tips
             const suggestions = [];
-
+            const lines = resume.split('\n').filter(l => l.trim().length > 10);
+            const actionVerbs = ["managed", "built", "created", "reduced", "increased", "developed", "led", "implemented", "saved", "improved", "delivered", "coordinated"];
+            
             let actionVerbCount = 0;
             let numberCount = 0;
 
@@ -338,10 +484,12 @@
                 if (/\d+/.test(line)) numberCount++;
             });
 
-            if (actionVerbCount < lines.length / 2) suggestions.push("Use more action verbs (e.g., 'Managed', 'Led') at the start of your bullet points.");
-            if (numberCount < lines.length / 3) suggestions.push("Add more quantifiable results (e.g., 'Reduced costs by 15%', 'Managed 50+ properties').");
-            if (matchPercent < 50) suggestions.push("Your resume is missing several key terms from the job description. Try to weave them in naturally.");
-            if (suggestions.length === 0) suggestions.push("Your bullet points are strong and result-oriented!", "Ensure your contact information is up to date.");
+            if (actionVerbCount < lines.length / 2) suggestions.push("Start more bullet points with strong action verbs (e.g., 'Delivered', 'Coordinated').");
+            if (numberCount < lines.length / 3) suggestions.push("Quantify your impact with numbers (e.g., 'Managed 100+ units', 'Increased efficiency by 20%').");
+            if (matchPercent < 60) suggestions.push("Your resume is missing critical keywords from the JD. Incorporate the missing terms naturally.");
+            if (resume.length > 5000) suggestions.push("Your resume text is quite long. Ensure it stays within 2 pages for better ATS readability.");
+            
+            if (suggestions.length === 0) suggestions.push("Excellent keyword alignment!", "Your bullet points are impactful and data-driven.");
 
             // Final Display
             document.getElementById('resume-result').classList.remove('hidden');
@@ -349,7 +497,12 @@
             document.getElementById('resume-gauge').style.width = matchPercent + '%';
             
             document.getElementById('missing-keywords').innerHTML = missing.map(kw => `<span class="bg-white border border-gray-200 px-3 py-1 rounded-full text-xs font-bold text-navy shadow-sm">${kw}</span>`).join('');
-            document.getElementById('resume-suggestions').innerHTML = suggestions.slice(0, 3).map(s => `<li class="flex items-start gap-2"><span class="text-primaryBlue font-bold">→</span> ${s}</li>`).join('');
+            document.getElementById('resume-suggestions').innerHTML = suggestions.slice(0, 4).map(s => `<li class="flex items-start gap-2"><span class="text-primaryBlue font-bold">→</span> ${s}</li>`).join('');
+            
+            // Reset Button
+            btn.disabled = false;
+            btnText.innerText = "Run ATS Analysis";
+            loader.classList.add('hidden');
             
             document.getElementById('resume-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
