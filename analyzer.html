@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile & Resume Analyzer | PropertyAura</title>
+    <meta name="description" content="Free LinkedIn headline and resume analyzer for property professionals. Get instant feedback on your profile and CV.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0A192F',
+                        gold: '#D4AF37',
+                        softGray: '#F8F9FA',
+                        darkSlate: '#2D3748',
+                        primaryBlue: '#2563eb',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #F8F9FA; color: #2D3748; scroll-behavior: smooth; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { color: #D4AF37; }
+        .hero-gradient { background: linear-gradient(135deg, #0A192F 0%, #112240 100%); }
+        .tab-active { border-bottom: 4px solid #D4AF37; color: #0A192F; font-weight: 700; }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- Sticky Navigation -->
+    <header class="sticky top-0 z-50 bg-navy text-white shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-serif font-black tracking-tight">
+                LetRight<span class="text-gold">-PropertyAura</span>
+            </a>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="templates.html" class="nav-link">Notion Templates</a>
+                <a href="calculators.html" class="nav-link">Calculators</a>
+                <a href="compliance.html" class="nav-link">Compliance Kits</a>
+                <a href="guides.html" class="nav-link">Guides</a>
+                <a href="analyzer.html" class="nav-link text-gold">Analyzer</a>
+                <a href="https://aftabpropertyva.github.io/property-remote-jobs/" class="nav-link">Property Jobs</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="menu-btn">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy px-6 pb-4 space-y-2 border-t border-white/10">
+            <a href="index.html" class="block py-2">Home</a>
+            <a href="templates.html" class="block py-2 hover:text-gold">Notion Templates</a>
+            <a href="calculators.html" class="block py-2 hover:text-gold">Calculators</a>
+            <a href="compliance.html" class="block py-2 hover:text-gold">Compliance Kits</a>
+            <a href="guides.html" class="block py-2 hover:text-gold">Guides</a>
+            <a href="analyzer.html" class="block py-2 text-gold">Analyzer</a>
+            <a href="https://aftabpropertyva.github.io/property-remote-jobs/" class="block py-2 hover:text-gold">Property Jobs</a>
+            <a href="contact.html" class="block py-2 hover:text-gold">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-16 relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold mb-4">Profile & Resume Analyzer</h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                Get instant feedback on your LinkedIn profile and CV – powered by AI-inspired logic.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-5xl mx-auto">
+            <!-- Tabs -->
+            <div class="flex border-b border-gray-200">
+                <button id="tab-linkedin" class="flex-1 py-4 text-center text-lg font-semibold tab-active transition-all" onclick="switchTab('linkedin')">
+                    LinkedIn Headline
+                </button>
+                <button id="tab-resume" class="flex-1 py-4 text-center text-lg font-semibold text-gray-500 hover:text-navy transition-all" onclick="switchTab('resume')">
+                    Resume vs Job Description
+                </button>
+            </div>
+
+            <!-- LinkedIn Section -->
+            <div id="section-linkedin" class="p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-bold text-navy mb-6 flex items-center gap-2">
+                            <svg class="w-6 h-6 text-primaryBlue" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            Headline Analyzer
+                        </h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Target Industry</label>
+                                <select id="industry" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none">
+                                    <option value="property">Property Management / Real Estate</option>
+                                    <option value="general">General Business / Tech</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2">Paste your LinkedIn Headline</label>
+                                <textarea id="headline-input" rows="4" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none" placeholder="e.g. Senior Property Manager | Helping landlords stay compliant with AI-driven systems"></textarea>
+                            </div>
+                            <button onclick="analyzeHeadline()" class="w-full bg-navy hover:bg-blue-900 text-white font-bold py-4 rounded-lg transition shadow-lg">
+                                Analyze Headline
+                            </button>
+                        </div>
+                    </div>
+                    <div id="headline-result" class="hidden bg-softGray rounded-xl p-6 border border-gray-200">
+                        <div class="text-center mb-6">
+                            <div class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Your Score</div>
+                            <div id="headline-score" class="text-6xl font-black text-navy">0</div>
+                            <div class="w-full bg-gray-200 h-3 rounded-full mt-4 overflow-hidden">
+                                <div id="headline-gauge" class="h-full bg-gold transition-all duration-1000" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-navy border-b border-gray-200 pb-2">Actionable Tips</h4>
+                            <ul id="headline-tips" class="space-y-3">
+                                <!-- Tips will be injected here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resume Section -->
+            <div id="section-resume" class="p-8 hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-navy flex items-center gap-2">
+                            <svg class="w-6 h-6 text-primaryBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Resume Scanner
+                        </h3>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Job Description</label>
+                            <textarea id="jd-input" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none" placeholder="Paste the job description here..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Resume Text</label>
+                            <textarea id="resume-input" rows="6" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primaryBlue focus:border-transparent outline-none" placeholder="Paste your resume plain text here..."></textarea>
+                        </div>
+                        <button onclick="analyzeResume()" class="w-full bg-navy hover:bg-blue-900 text-white font-bold py-4 rounded-lg transition shadow-lg">
+                            Run ATS Analysis
+                        </button>
+                    </div>
+                    <div id="resume-result" class="hidden bg-softGray rounded-xl p-6 border border-gray-200">
+                        <div class="text-center mb-8">
+                            <div class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2">Match Score</div>
+                            <div id="resume-score" class="text-6xl font-black text-navy">0%</div>
+                            <div class="w-full bg-gray-200 h-3 rounded-full mt-4 overflow-hidden">
+                                <div id="resume-gauge" class="h-full bg-primaryBlue transition-all duration-1000" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-navy border-b border-gray-200 pb-2 mb-3">Missing Keywords</h4>
+                                <div id="missing-keywords" class="flex flex-wrap gap-2">
+                                    <!-- Keywords will be injected here -->
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-navy border-b border-gray-200 pb-2 mb-3">Bullet Point Suggestions</h4>
+                                <ul id="resume-suggestions" class="space-y-2 text-sm text-gray-600">
+                                    <!-- Suggestions will be injected here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="mt-12 text-center text-gray-500 text-sm max-w-2xl mx-auto">
+            <p><strong>Disclaimer:</strong> This tool provides estimated guidance based on common industry patterns. For professional career advice, please consult a qualified recruiter or career coach.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-navy text-white py-12 mt-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-2xl font-serif font-black mb-4">LetRight<span class="text-gold">-PropertyAura</span></div>
+            <p class="text-gray-400 mb-8">Empowering UK Landlords with Professional Systems</p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="index.html" class="hover:text-gold transition">Home</a>
+                <a href="templates.html" class="hover:text-gold transition">Templates</a>
+                <a href="calculators.html" class="hover:text-gold transition">Calculators</a>
+                <a href="analyzer.html" class="hover:text-gold transition">Analyzer</a>
+                <a href="contact.html" class="hover:text-gold transition">Contact</a>
+            </div>
+            <p class="text-gray-500 text-sm">&copy; 2026 PropertyAura. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tab Switching
+        function switchTab(tab) {
+            const linkedinBtn = document.getElementById('tab-linkedin');
+            const resumeBtn = document.getElementById('tab-resume');
+            const linkedinSection = document.getElementById('section-linkedin');
+            const resumeSection = document.getElementById('section-resume');
+
+            if (tab === 'linkedin') {
+                linkedinBtn.classList.add('tab-active');
+                linkedinBtn.classList.remove('text-gray-500');
+                resumeBtn.classList.remove('tab-active');
+                resumeBtn.classList.add('text-gray-500');
+                linkedinSection.classList.remove('hidden');
+                resumeSection.classList.add('hidden');
+            } else {
+                resumeBtn.classList.add('tab-active');
+                resumeBtn.classList.remove('text-gray-500');
+                linkedinBtn.classList.remove('tab-active');
+                linkedinBtn.classList.add('text-gray-500');
+                resumeSection.classList.remove('hidden');
+                linkedinSection.classList.add('hidden');
+            }
+        }
+
+        // LinkedIn Analysis Logic
+        const keywords = {
+            property: ["property manager", "compliance", "lettings", "hmo", "mtd", "tenant onboarding", "portfolio", "ai", "automation", "real estate", "landlord", "rent", "maintenance", "legal", "safety", "gas safety", "eicr", "epc", "deposit", "inventory"],
+            general: ["manager", "specialist", "expert", "consultant", "lead", "director", "strategy", "growth", "operations", "efficiency", "solutions", "innovation", "digital", "transformation", "customer success", "business development"]
+        };
+
+        const genericWords = ["results-driven", "passionate", "hardworking", "team player", "self-motivated", "dynamic", "experienced", "motivated"];
+        const valueWords = ["help", "solve", "support", "save time", "grow", "scale", "achieve", "improve", "ensure", "protect"];
+
+        function analyzeHeadline() {
+            const text = document.getElementById('headline-input').value.trim();
+            const industry = document.getElementById('industry').value;
+            if (!text) return alert("Please enter a headline");
+
+            let score = 0;
+            const tips = [];
+            const words = text.toLowerCase().split(/\W+/);
+
+            // 1. Keyword Density (25 pts)
+            const industryKeywords = keywords[industry];
+            const matchCount = industryKeywords.filter(kw => text.toLowerCase().includes(kw)).length;
+            const kwScore = Math.min(25, matchCount * 8);
+            score += kwScore;
+            if (matchCount < 2) tips.push(`Add more industry-specific keywords like "${industryKeywords[0]}" or "${industryKeywords[1]}"`);
+
+            // 2. Generic Phrases (25 pts)
+            let genericPenalty = 0;
+            genericWords.forEach(word => {
+                if (text.toLowerCase().includes(word)) genericPenalty += 8;
+            });
+            const genericScore = Math.max(0, 25 - genericPenalty);
+            score += genericScore;
+            if (genericPenalty > 0) tips.push("Replace generic buzzwords (like 'hardworking') with measurable achievements");
+
+            // 3. Clarity & Length (25 pts)
+            const wordCount = words.length;
+            let lengthScore = 0;
+            if (wordCount >= 8 && wordCount <= 15) lengthScore = 25;
+            else if (wordCount > 0) lengthScore = 15;
+            score += lengthScore;
+            if (wordCount < 8) tips.push("Your headline is a bit short. Aim for 8-15 words to provide more context.");
+            if (wordCount > 15) tips.push("Your headline is quite long. Try to keep it under 15 words for better readability.");
+
+            // 4. Value Prop (25 pts)
+            const hasValue = valueWords.some(word => text.toLowerCase().includes(word));
+            const valueScore = hasValue ? 25 : 0;
+            score += valueScore;
+            if (!hasValue) tips.push("Include a value proposition: How do you help or what problem do you solve?");
+
+            // Final Display
+            if (tips.length === 0) tips.push("Great job! Your headline is strong and professional.", "Consider adding a call to action.", "Keep it updated as your role evolves.");
+            
+            document.getElementById('headline-result').classList.remove('hidden');
+            document.getElementById('headline-score').innerText = score;
+            document.getElementById('headline-gauge').style.width = score + '%';
+            
+            const tipsList = document.getElementById('headline-tips');
+            tipsList.innerHTML = tips.slice(0, 3).map(tip => `<li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold font-bold">•</span> ${tip}</li>`).join('');
+            
+            document.getElementById('headline-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Resume Analysis Logic
+        const stopWords = new Set(["this", "that", "with", "from", "your", "their", "about", "would", "could", "should", "there", "where", "which"]);
+
+        function analyzeResume() {
+            const jd = document.getElementById('jd-input').value.trim();
+            const resume = document.getElementById('resume-input').value.trim();
+            if (!jd || !resume) return alert("Please fill in both Job Description and Resume");
+
+            // 1. Keyword Extraction from JD
+            const jdWords = jd.toLowerCase().split(/\W+/).filter(w => w.length > 3 && !stopWords.has(w));
+            const uniqueJdWords = [...new Set(jdWords)].slice(0, 40);
+
+            // 2. Keyword Matching
+            const matched = uniqueJdWords.filter(word => resume.toLowerCase().includes(word));
+            const matchPercent = Math.round((matched.length / uniqueJdWords.length) * 100);
+            const missing = uniqueJdWords.filter(word => !resume.toLowerCase().includes(word)).slice(0, 5);
+
+            // 3. Bullet Point Quality
+            const lines = resume.split('\n').filter(l => l.trim().length > 10);
+            const actionVerbs = ["managed", "built", "created", "reduced", "increased", "developed", "led", "implemented", "saved", "improved"];
+            const suggestions = [];
+
+            let actionVerbCount = 0;
+            let numberCount = 0;
+
+            lines.forEach(line => {
+                const firstWord = line.trim().toLowerCase().split(' ')[0];
+                if (actionVerbs.includes(firstWord)) actionVerbCount++;
+                if (/\d+/.test(line)) numberCount++;
+            });
+
+            if (actionVerbCount < lines.length / 2) suggestions.push("Use more action verbs (e.g., 'Managed', 'Led') at the start of your bullet points.");
+            if (numberCount < lines.length / 3) suggestions.push("Add more quantifiable results (e.g., 'Reduced costs by 15%', 'Managed 50+ properties').");
+            if (matchPercent < 50) suggestions.push("Your resume is missing several key terms from the job description. Try to weave them in naturally.");
+            if (suggestions.length === 0) suggestions.push("Your bullet points are strong and result-oriented!", "Ensure your contact information is up to date.");
+
+            // Final Display
+            document.getElementById('resume-result').classList.remove('hidden');
+            document.getElementById('resume-score').innerText = matchPercent + '%';
+            document.getElementById('resume-gauge').style.width = matchPercent + '%';
+            
+            document.getElementById('missing-keywords').innerHTML = missing.map(kw => `<span class="bg-white border border-gray-200 px-3 py-1 rounded-full text-xs font-bold text-navy shadow-sm">${kw}</span>`).join('');
+            document.getElementById('resume-suggestions').innerHTML = suggestions.slice(0, 3).map(s => `<li class="flex items-start gap-2"><span class="text-primaryBlue font-bold">→</span> ${s}</li>`).join('');
+            
+            document.getElementById('resume-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>
