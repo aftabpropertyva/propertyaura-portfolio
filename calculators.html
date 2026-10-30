@@ -54,6 +54,12 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebPage","name":"UK Property Calculators | MTD, HMO, R2R, SDLT Tools 2026","description":"Free UK property calculators for landlords. MTD eligibility, HMO yields, R2R cashflow, SDLT, and CGT estimators. Updated for 2026 regulations.","url":"https://aftabpropertyva.github.io/propertyaura-portfolio/calculators.html","isPartOf":{"@type":"WebSite","name":"PropertyAura","url":"https://aftabpropertyva.github.io/propertyaura-portfolio/"}}
     </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What can a UK landlord calculator estimate?","acceptedAnswer":{"@type":"Answer","text":"PropertyAura calculators estimate mortgage payments, MTD status, rent-to-rent cashflow, HMO yield, serviced accommodation occupancy profit, SDLT and property CGT using the assumptions you enter."}},{"@type":"Question","name":"Are the calculator results financial advice?","acceptedAnswer":{"@type":"Answer","text":"No. Results are educational estimates. Confirm current tax rules, lender criteria and transaction costs with qualified professionals before making a decision."}}]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://aftabpropertyva.github.io/propertyaura-portfolio/index.html"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://aftabpropertyva.github.io/propertyaura-portfolio/calculators.html"}]}
+    </script>
 </head>
 <body class="font-sans">
 
@@ -97,6 +103,13 @@
         </div>
     </section>
 
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-serif font-bold text-navy mb-4">How to use UK property calculators</h2>
+            <p class="text-gray-600 mb-4">Use these free landlord calculators to test mortgage payments, buy-to-let cashflow, HMO yield, rent-to-rent returns, serviced accommodation occupancy, SDLT and property CGT assumptions. Start with evidence-based inputs, then run a downside scenario for higher costs, lower rent or a longer void.</p>
+            <p class="text-gray-600">For a deeper explanation of finance, Section 24, affordability and strategy selection, read the <a href="guide-btl-investment.html" class="text-primaryBlue font-semibold hover:underline">UK buy-to-let investment guide</a>. These tools are educational estimates and do not replace advice from a regulated mortgage adviser, accountant or conveyancer.</p>
+        </div>
+    </section>
     <!-- Calculator Grid -->
     <section class="py-16 bg-softGray">
         <div class="container mx-auto px-6">
@@ -262,6 +275,15 @@
     <div id="sdlt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]"><div class="modal-overlay absolute w-full h-full bg-navy opacity-50" onclick="closeModal('sdlt-modal')"></div><div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]"><div class="modal-content py-6 px-8"><div class="flex justify-between items-center pb-4 border-b"><h2 class="text-2xl font-bold text-navy">UK SDLT Calculator</h2><button type="button" aria-label="Close SDLT calculator" onclick="closeModal('sdlt-modal')">✕</button></div><label class="block text-sm font-semibold mt-6">Purchase price (£)<input id="sdlt-price" type="number" value="250000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="flex items-center gap-2 mt-4 text-sm font-semibold"><input id="sdlt-surcharge" type="checkbox" checked> BTL / second home surcharge (illustrative +3%)</label><button onclick="calculateSDLT()" class="w-full mt-6 bg-navy text-white py-3 rounded-lg font-bold">Calculate SDLT</button><div id="sdlt-result" class="mt-5 p-5 bg-softGray rounded-lg hidden"></div></div></div></div>
     <!-- CGT Modal -->
     <div id="cgt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]"><div class="modal-overlay absolute w-full h-full bg-navy opacity-50" onclick="closeModal('cgt-modal')"></div><div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]"><div class="modal-content py-6 px-8"><div class="flex justify-between items-center pb-4 border-b"><h2 class="text-2xl font-bold text-navy">Property CGT Estimator</h2><button type="button" aria-label="Close CGT calculator" onclick="closeModal('cgt-modal')">✕</button></div><div class="grid md:grid-cols-2 gap-4 mt-6"><label class="text-sm font-semibold">Sale price (£)<input id="cgt-sale" type="number" value="300000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Purchase price (£)<input id="cgt-purchase" type="number" value="220000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Improvements (£)<input id="cgt-improvements" type="number" value="5000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Selling costs (£)<input id="cgt-costs" type="number" value="3000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Estimated CGT rate (%)<input id="cgt-rate" type="number" value="24" min="0" max="100" class="mt-1 w-full border rounded p-2"></label></div><button onclick="calculateCGT()" class="w-full mt-6 bg-navy text-white py-3 rounded-lg font-bold">Estimate CGT</button><div id="cgt-result" class="mt-5 p-5 bg-softGray rounded-lg hidden"></div></div></div></div>
+    <section class="py-16 bg-softGray border-t border-gray-100">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-serif font-bold text-navy mb-8 text-center">UK property calculator FAQs</h2>
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl p-6 shadow-sm"><h3 class="text-lg font-bold text-navy mb-2">Which property calculator should I use?</h3><p class="text-gray-600">Use the mortgage calculator for finance payments, the R2R analyzer for rental arbitrage, the HMO tool for room-by-room yield, the SA tool for occupancy scenarios, SDLT for purchase tax estimates and CGT for a first-pass gains estimate.</p></div>
+                <div class="bg-white rounded-xl p-6 shadow-sm"><h3 class="text-lg font-bold text-navy mb-2">How accurate are the results?</h3><p class="text-gray-600">The calculators are planning tools. Results depend on the assumptions entered and should be checked against current HMRC guidance, lender criteria, local licensing rules and advice from qualified professionals.</p></div>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer class="bg-navy text-white py-12 border-t border-white/10">
         <div class="container mx-auto px-6 text-center">
