@@ -205,6 +205,50 @@
         </div>
     </section>
 
+    <!-- Buy-to-Let Investment Tools -->
+    <section id="btl-tools" class="py-20 bg-navy text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-12">
+                <p class="text-gold uppercase tracking-widest text-sm font-bold mb-3">Built for UK landlords</p>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold mb-5">Buy-to-Let Investment Tools</h2>
+                <p class="text-gray-300 text-lg">Stress-test your next deal before you commit. Change any input to see the numbers update instantly.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <article class="bg-white text-darkSlate rounded-2xl p-7 shadow-xl">
+                    <div class="flex items-start justify-between mb-5"><div><p class="text-gold font-bold text-sm uppercase tracking-wide">Tool 01</p><h3 class="text-2xl font-bold text-navy">BTL Cashflow</h3></div><span class="text-3xl">£</span></div>
+                    <div class="space-y-4">
+                        <label class="block text-sm font-semibold">Monthly rent (£)<input id="btl-rent" type="number" value="1400" min="0" step="50" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Monthly mortgage payment (£)<input id="btl-mortgage" type="number" value="650" min="0" step="25" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Monthly operating costs (£)<input id="btl-costs" type="number" value="250" min="0" step="10" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Void allowance (%)<input id="btl-void" type="number" value="5" min="0" max="100" step="1" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                    </div>
+                    <div id="btl-result" class="mt-6 rounded-xl bg-navy p-5 text-white"></div>
+                </article>
+                <article class="bg-white text-darkSlate rounded-2xl p-7 shadow-xl">
+                    <div class="flex items-start justify-between mb-5"><div><p class="text-gold font-bold text-sm uppercase tracking-wide">Tool 02</p><h3 class="text-2xl font-bold text-navy">Affordability & Finance</h3></div><span class="text-3xl">↗</span></div>
+                    <div class="space-y-4">
+                        <label class="block text-sm font-semibold">Annual rent (£)<input id="aff-rent" type="number" value="16800" min="0" step="500" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Stress interest rate (%)<input id="aff-rate" type="number" value="5.5" min="0" step="0.1" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Required ICR (%)<input id="aff-icr" type="number" value="145" min="100" step="5" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Loan term (years)<input id="aff-term" type="number" value="25" min="1" step="1" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                    </div>
+                    <div id="affordability-result" class="mt-6 rounded-xl bg-navy p-5 text-white"></div>
+                </article>
+                <article class="bg-white text-darkSlate rounded-2xl p-7 shadow-xl">
+                    <div class="flex items-start justify-between mb-5"><div><p class="text-gold font-bold text-sm uppercase tracking-wide">Tool 03</p><h3 class="text-2xl font-bold text-navy">Strategy Comparison</h3></div><span class="text-3xl">▤</span></div>
+                    <div class="space-y-4">
+                        <label class="block text-sm font-semibold">Property value (£)<input id="strategy-value" type="number" value="250000" min="0" step="5000" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Loan amount (£)<input id="strategy-loan" type="number" value="175000" min="0" step="5000" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Annual rent (£)<input id="strategy-rent" type="number" value="16800" min="0" step="500" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Annual costs excluding finance (£)<input id="strategy-costs" type="number" value="3600" min="0" step="100" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                        <label class="block text-sm font-semibold">Your marginal tax rate (%)<input id="strategy-tax" type="number" value="40" min="0" max="100" step="1" class="mt-1 w-full rounded-lg border-gray-200 bg-gray-50 p-3"></label>
+                    </div>
+                    <div id="strategy-result" class="mt-6 rounded-xl bg-navy p-5 text-white"></div>
+                </article>
+            </div>
+            <p class="text-center text-xs text-gray-400 mt-8">Illustrative planning tools only. Actual lender criteria, tax treatment, costs and returns vary; seek regulated financial and tax advice.</p>
+        </div>
+    </section>
     <!-- About Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
@@ -258,12 +302,44 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        const money = value => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(value || 0);
+        const number = id => Math.max(0, parseFloat(document.getElementById(id).value) || 0);
+
+        function calculateBTL() {
+            const rent = number('btl-rent'), mortgage = number('btl-mortgage'), costs = number('btl-costs'), voidRate = number('btl-void');
+            const effectiveRent = rent * (1 - Math.min(voidRate, 100) / 100);
+            const monthly = effectiveRent - mortgage - costs, annual = monthly * 12;
+            document.getElementById('btl-result').innerHTML = `<p class="text-sm text-gray-300">Estimated monthly cashflow</p><p class="text-3xl font-bold ${monthly >= 0 ? 'text-green-300' : 'text-red-300'}">${money(monthly)}</p><div class="mt-3 flex justify-between text-sm"><span>Annual cashflow</span><strong>${money(annual)}</strong></div><p class="mt-3 text-xs text-gray-400">After void allowance, finance and operating costs.</p>`;
+        }
+        function calculateAffordability() {
+            const annualRent = number('aff-rent'), rate = number('aff-rate') / 100, icr = number('aff-icr') / 100, term = number('aff-term');
+            const maxAnnualInterest = annualRent / icr, maxLoan = rate ? maxAnnualInterest / rate : 0, monthlyStress = maxAnnualInterest / 12;
+            document.getElementById('affordability-result').innerHTML = `<p class="text-sm text-gray-300">Indicative maximum loan</p><p class="text-3xl font-bold text-gold">${money(maxLoan)}</p><div class="mt-3 space-y-1 text-sm"><div class="flex justify-between"><span>Stress-test interest</span><strong>${money(monthlyStress)}/mo</strong></div><div class="flex justify-between"><span>Annual rent cover</span><strong>${Math.round(icr * 100)}% ICR</strong></div></div><p class="mt-3 text-xs text-gray-400">Interest-only affordability view; lender rules differ.</p>`;
+        }
+        function calculateInterestVsRepayment() {
+            const loan = number('strategy-loan'), rate = 0.055, years = Math.max(1, number('aff-term') || 25), monthlyRate = rate / 12, n = years * 12;
+            const interestOnly = loan * rate / 12, repayment = monthlyRate ? loan * monthlyRate / (1 - Math.pow(1 + monthlyRate, -n)) : loan / n;
+            return { interestOnly, repayment };
+        }
+        function calculateSection24(interest, taxRate, profitBeforeFinance) {
+            const tax = Math.max(0, profitBeforeFinance) * taxRate, financeCredit = interest * 0.20;
+            return Math.max(0, tax - financeCredit);
+        }
+        function compareStrategies() {
+            const value = number('strategy-value'), loan = number('strategy-loan'), rent = number('strategy-rent'), costs = number('strategy-costs'), taxRate = number('strategy-tax') / 100;
+            const { interestOnly, repayment } = calculateInterestVsRepayment();
+            const operatingProfit = rent - costs, interestProfit = operatingProfit - interestOnly * 12, repaymentProfit = operatingProfit - repayment * 12;
+            const interestTax = calculateSection24(interestOnly * 12, taxRate, operatingProfit), repaymentTax = calculateSection24(interestOnly * 12, taxRate, operatingProfit);
+            const interestCash = interestProfit - interestTax, repaymentCash = repaymentProfit - repaymentTax, equity = Math.max(1, value - loan);
+            document.getElementById('strategy-result').innerHTML = `<div class="space-y-3 text-sm"><div><p class="text-gray-300">Interest-only cashflow</p><p class="text-xl font-bold ${interestCash >= 0 ? 'text-green-300' : 'text-red-300'}">${money(interestCash)}/yr</p><p class="text-xs text-gray-400">Payment ${money(interestOnly)}/mo · Section 24 tax estimate ${money(interestTax)}</p></div><div class="border-t border-white/20 pt-3"><p class="text-gray-300">Repayment cashflow</p><p class="text-xl font-bold ${repaymentCash >= 0 ? 'text-green-300' : 'text-red-300'}">${money(repaymentCash)}/yr</p><p class="text-xs text-gray-400">Payment ${money(repayment)}/mo · Equity-based return ${((repaymentCash / equity) * 100).toFixed(1)}%</p></div></div>`;
+        }
+        ['btl-rent','btl-mortgage','btl-costs','btl-void'].forEach(id => document.getElementById(id).addEventListener('input', calculateBTL));
+        ['aff-rent','aff-rate','aff-icr','aff-term'].forEach(id => document.getElementById(id).addEventListener('input', calculateAffordability));
+        ['strategy-value','strategy-loan','strategy-rent','strategy-costs','strategy-tax'].forEach(id => document.getElementById(id).addEventListener('input', compareStrategies));
+        calculateBTL(); calculateAffordability(); compareStrategies();
     </script>
 </body>
 </html>
