@@ -42,6 +42,18 @@
         .modal { transition: opacity 0.25s ease; }
         body.modal-active { overflow: hidden; }
     </style>
+
+    <meta name="keywords" content="UK property tools, landlord calculators, property management, PropertyAura">
+    <link rel="canonical" href="https://aftabpropertyva.github.io/propertyaura-portfolio/calculators.html">
+    <meta property="og:title" content="UK Property Calculators | MTD, HMO, R2R, SDLT Tools 2026">
+    <meta property="og:description" content="Free UK property calculators for landlords. MTD eligibility, HMO yields, R2R cashflow, SDLT, and CGT estimators. Updated for 2026 regulations.">
+    <meta property="og:image" content="https://aftabpropertyva.github.io/propertyaura-portfolio/og-image.png">
+    <meta property="og:url" content="https://aftabpropertyva.github.io/propertyaura-portfolio/calculators.html">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebPage","name":"UK Property Calculators | MTD, HMO, R2R, SDLT Tools 2026","description":"Free UK property calculators for landlords. MTD eligibility, HMO yields, R2R cashflow, SDLT, and CGT estimators. Updated for 2026 regulations.","url":"https://aftabpropertyva.github.io/propertyaura-portfolio/calculators.html","isPartOf":{"@type":"WebSite","name":"PropertyAura","url":"https://aftabpropertyva.github.io/propertyaura-portfolio/"}}
+    </script>
 </head>
 <body class="font-sans">
 
@@ -233,6 +245,23 @@
         </div>
     </div>
 
+
+    <!-- R2R Modal -->
+    <div id="r2r-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]">
+        <div class="modal-overlay absolute w-full h-full bg-navy opacity-50" onclick="closeModal('r2r-modal')"></div>
+        <div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]"><div class="modal-content py-6 px-8">
+            <div class="flex justify-between items-center pb-4 border-b"><h2 class="text-2xl font-bold text-navy">Rent-to-Rent Analyzer</h2><button type="button" aria-label="Close R2R calculator" onclick="closeModal('r2r-modal')">✕</button></div>
+            <div class="grid md:grid-cols-2 gap-4 mt-6"><label class="text-sm font-semibold">Monthly rent charged (£)<input id="r2r-rent" type="number" value="1400" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Monthly rent to owner (£)<input id="r2r-owner" type="number" value="900" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Monthly operating costs (£)<input id="r2r-costs" type="number" value="180" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Initial capital (£)<input id="r2r-capital" type="number" value="3000" min="0" class="mt-1 w-full border rounded p-2"></label></div><button onclick="calculateR2R()" class="w-full mt-6 bg-navy text-white py-3 rounded-lg font-bold">Calculate R2R Return</button><div id="r2r-result" class="mt-5 p-5 bg-softGray rounded-lg hidden"></div>
+        </div></div>
+    </div>
+    <!-- HMO Modal -->
+    <div id="hmo-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]"><div class="modal-overlay absolute w-full h-full bg-navy opacity-50" onclick="closeModal('hmo-modal')"></div><div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]"><div class="modal-content py-6 px-8"><div class="flex justify-between items-center pb-4 border-b"><h2 class="text-2xl font-bold text-navy">HMO Yield & Profit Engine</h2><button type="button" aria-label="Close HMO calculator" onclick="closeModal('hmo-modal')">✕</button></div><div class="grid md:grid-cols-2 gap-4 mt-6"><label class="text-sm font-semibold">Property value (£)<input id="hmo-value" type="number" value="250000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Bedrooms/rooms<input id="hmo-rooms" type="number" value="5" min="1" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Monthly rent per room (£)<input id="hmo-rent" type="number" value="650" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Monthly operating costs (£)<input id="hmo-costs" type="number" value="550" min="0" class="mt-1 w-full border rounded p-2"></label></div><button onclick="calculateHMO()" class="w-full mt-6 bg-navy text-white py-3 rounded-lg font-bold">Calculate HMO Yield</button><div id="hmo-result" class="mt-5 p-5 bg-softGray rounded-lg hidden"></div></div></div></div>
+    <!-- SA Modal -->
+    <div id="sa-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]"><div class="modal-overlay absolute w-full h-full bg-navy opacity-50" onclick="closeModal('sa-modal')"></div><div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]"><div class="modal-content py-6 px-8"><div class="flex justify-between items-center pb-4 border-b"><h2 class="text-2xl font-bold text-navy">SA Occupancy Stress-Test</h2><button type="button" aria-label="Close SA calculator" onclick="closeModal('sa-modal')">✕</button></div><div class="grid md:grid-cols-2 gap-4 mt-6"><label class="text-sm font-semibold">Nightly rate (£)<input id="sa-rate" type="number" value="120" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Monthly operating costs (£)<input id="sa-costs" type="number" value="1200" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Cleaning/booking cost per occupied night (£)<input id="sa-variable" type="number" value="15" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Available nights per month<input id="sa-nights" type="number" value="30" min="1" max="31" class="mt-1 w-full border rounded p-2"></label></div><button onclick="calculateSA()" class="w-full mt-6 bg-navy text-white py-3 rounded-lg font-bold">Run Occupancy Stress-Test</button><div id="sa-result" class="mt-5 p-5 bg-softGray rounded-lg hidden"></div></div></div></div>
+    <!-- SDLT Modal -->
+    <div id="sdlt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]"><div class="modal-overlay absolute w-full h-full bg-navy opacity-50" onclick="closeModal('sdlt-modal')"></div><div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]"><div class="modal-content py-6 px-8"><div class="flex justify-between items-center pb-4 border-b"><h2 class="text-2xl font-bold text-navy">UK SDLT Calculator</h2><button type="button" aria-label="Close SDLT calculator" onclick="closeModal('sdlt-modal')">✕</button></div><label class="block text-sm font-semibold mt-6">Purchase price (£)<input id="sdlt-price" type="number" value="250000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="flex items-center gap-2 mt-4 text-sm font-semibold"><input id="sdlt-surcharge" type="checkbox" checked> BTL / second home surcharge (illustrative +3%)</label><button onclick="calculateSDLT()" class="w-full mt-6 bg-navy text-white py-3 rounded-lg font-bold">Calculate SDLT</button><div id="sdlt-result" class="mt-5 p-5 bg-softGray rounded-lg hidden"></div></div></div></div>
+    <!-- CGT Modal -->
+    <div id="cgt-modal" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-[100]"><div class="modal-overlay absolute w-full h-full bg-navy opacity-50" onclick="closeModal('cgt-modal')"></div><div class="modal-container bg-white w-11/12 md:max-w-2xl mx-auto rounded shadow-lg z-50 overflow-y-auto max-h-[90vh]"><div class="modal-content py-6 px-8"><div class="flex justify-between items-center pb-4 border-b"><h2 class="text-2xl font-bold text-navy">Property CGT Estimator</h2><button type="button" aria-label="Close CGT calculator" onclick="closeModal('cgt-modal')">✕</button></div><div class="grid md:grid-cols-2 gap-4 mt-6"><label class="text-sm font-semibold">Sale price (£)<input id="cgt-sale" type="number" value="300000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Purchase price (£)<input id="cgt-purchase" type="number" value="220000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Improvements (£)<input id="cgt-improvements" type="number" value="5000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Selling costs (£)<input id="cgt-costs" type="number" value="3000" min="0" class="mt-1 w-full border rounded p-2"></label><label class="text-sm font-semibold">Estimated CGT rate (%)<input id="cgt-rate" type="number" value="24" min="0" max="100" class="mt-1 w-full border rounded p-2"></label></div><button onclick="calculateCGT()" class="w-full mt-6 bg-navy text-white py-3 rounded-lg font-bold">Estimate CGT</button><div id="cgt-result" class="mt-5 p-5 bg-softGray rounded-lg hidden"></div></div></div></div>
     <!-- Footer -->
     <footer class="bg-navy text-white py-12 border-t border-white/10">
         <div class="container mx-auto px-6 text-center">
@@ -261,6 +290,35 @@
             document.body.classList.remove('modal-active');
         }
 
+
+        function formatGBP(value) { return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 }).format(value || 0); }
+        function val(id) { return Math.max(0, parseFloat(document.getElementById(id).value) || 0); }
+        function showCalcResult(id, html) { const el = document.getElementById(id); el.innerHTML = html; el.classList.remove('hidden'); }
+        function calculateR2R() {
+            const monthlyRent=val('r2r-rent'), owner=val('r2r-owner'), costs=val('r2r-costs'), capital=val('r2r-capital');
+            const monthly=monthlyRent-owner-costs, annual=monthly*12, roce=capital ? annual/capital*100 : 0;
+            showCalcResult('r2r-result', `<p class="font-bold text-navy">Net monthly cashflow: ${formatGBP(monthly)}</p><p>Annual profit: ${formatGBP(annual)}</p><p>ROCE: <strong>${roce.toFixed(1)}%</strong></p><p class="text-xs text-gray-500 mt-2">Before tax and unexpected repairs.</p>`);
+        }
+        function calculateHMO() {
+            const value=val('hmo-value'), rooms=val('hmo-rooms'), rent=val('hmo-rent'), costs=val('hmo-costs');
+            const gross=rooms*rent*12, licence=15*12, maintenance=gross*0.10, net=gross-costs*12-licence-maintenance;
+            showCalcResult('hmo-result', `<p>Annual gross rent: <strong>${formatGBP(gross)}</strong></p><p>Gross yield: <strong>${value ? (gross/value*100).toFixed(2) : '0.00'}%</strong></p><p>Annual net estimate: <strong>${formatGBP(net)}</strong></p><p>Net yield: <strong>${value ? (net/value*100).toFixed(2) : '0.00'}%</strong></p><p class="text-xs text-gray-500 mt-2">Includes £900 licensing fee amortised at £15/month and a 10% maintenance reserve.</p>`);
+        }
+        function calculateSA() {
+            const rate=val('sa-rate'), costs=val('sa-costs'), variable=val('sa-variable'), nights=val('sa-nights');
+            const rows=[50,70,90].map(occupancy => { const occupied=nights*occupancy/100, revenue=occupied*rate, profit=revenue-costs-occupied*variable; return `<div class="flex justify-between border-b py-2"><span>${occupancy}% occupancy</span><strong>${formatGBP(profit)}/mo</strong></div>`; }).join('');
+            showCalcResult('sa-result', `<p class="font-bold text-navy mb-2">Estimated monthly profit</p>${rows}<p class="text-xs text-gray-500 mt-2">Before tax, finance and major replacement costs.</p>`);
+        }
+        function calculateSDLT() {
+            const price=val('sdlt-price'), surcharge=document.getElementById('sdlt-surcharge').checked ? 0.03 : 0;
+            const bands=[[125000,0.00],[250000,0.02],[925000,0.05],[1500000,0.10],[Infinity,0.12]]; let tax=0, previous=0;
+            for(const [limit,rate] of bands){ const slice=Math.max(0,Math.min(price,limit)-previous); tax += slice*(rate+surcharge); previous=limit; if(price<=limit) break; }
+            showCalcResult('sdlt-result', `<p class="font-bold text-navy">Estimated SDLT: ${formatGBP(tax)}</p><p>Effective rate: <strong>${price ? (tax/price*100).toFixed(2) : '0.00'}%</strong></p><p class="text-xs text-gray-500 mt-2">Illustrative England/Northern Ireland bands. Confirm current rates with HMRC or your conveyancer.</p>`);
+        }
+        function calculateCGT() {
+            const gain=Math.max(0,val('cgt-sale')-val('cgt-purchase')-val('cgt-improvements')-val('cgt-costs')), allowance=12300, taxable=Math.max(0,gain-allowance), tax=taxable*val('cgt-rate')/100;
+            showCalcResult('cgt-result', `<p>Estimated gain: <strong>${formatGBP(gain)}</strong></p><p>Annual allowance used: <strong>${formatGBP(allowance)}</strong></p><p>Taxable gain: <strong>${formatGBP(taxable)}</strong></p><p class="font-bold text-navy mt-2">Estimated CGT: ${formatGBP(tax)}</p><p class="text-xs text-gray-500 mt-2">Illustrative estimate; reliefs, rates and allowances depend on your circumstances.</p>`);
+        }
         // Mortgage Calculation
         function calculateMortgage() {
             const value = parseFloat(document.getElementById('mort-value').value);
