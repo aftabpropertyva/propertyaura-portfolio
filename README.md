@@ -3,7 +3,7 @@
 A high-performance web platform designed for UK landlords, R2R investors, HMO managers, and property developers. This site provides professional-grade calculators updated for the 2026 regulatory landscape, acts as a lead magnet for property VA services, and showcases premium compliance products.
 
 ## 🚀 Live Demo
-[View the Live Site](https://aftabpropertyva.github.io/)
+[View the Live Site](https://aftabpropertyva.github.io/propertyaura-portfolio/)
 
 ## 🛠 Features
 
